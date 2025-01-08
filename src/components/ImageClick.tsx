@@ -16,13 +16,13 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
   const draw = (image: HTMLImageElement, ctx: CanvasRenderingContext2D) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'purple';
     dotPositions.forEach(({ x, y }) => {
       ctx.beginPath();
       ctx.arc(x, y, 8, 0, 2 * Math.PI);
       ctx.fill();
       if (dotPositions.length > 1) {
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'teal';
         ctx.lineWidth = 2;
         
         for (let i = 0; i < dotPositions.length - 1; i++) {
@@ -43,7 +43,7 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
           ctx.lineTo(-15, -7);
           ctx.lineTo(-15, 7);
           ctx.closePath();
-          ctx.fillStyle = 'black';
+          ctx.fillStyle = 'teal';
           ctx.fill();
           ctx.restore();
         }

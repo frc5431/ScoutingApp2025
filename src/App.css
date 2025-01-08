@@ -31,6 +31,30 @@ li {
 .tabs {
   grid-row:2;
 }
+@keyframes outlinePulse {
+  0% {
+    outline: 4px solid transparent;
+    outline-offset: 0px;
+  }
+  50% {
+    outline: 4px solid white;
+    outline-offset: 4px;
+  }
+  100% {
+    outline: 4px solid transparent;
+    outline-offset: 0px;
+  }
+}
+
+.tabs:hover {
+  border-color: white;
+}
+
+.tabs:focus,
+.tabs:focus-visible {
+  animation: outlinePulse 1.5s ease-in-out;
+  outline: none; /* Remove default outline */
+}
 
 .mainContent {
   grid-row: 3;
