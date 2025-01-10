@@ -1,4 +1,4 @@
-package com.example.app;
+package com.frc5431.scouting;
 
 import com.getcapacitor.BridgeActivity;
 
