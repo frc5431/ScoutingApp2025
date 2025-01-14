@@ -324,6 +324,14 @@ redbutton:focus-visible {
   justify-content: center;
   align-items: center;
 }
+
+.input-row-evenly{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .input-row-mainpage{
   display: flex;
   flex-wrap: wrap;
