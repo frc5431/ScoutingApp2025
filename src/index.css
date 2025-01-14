@@ -316,6 +316,19 @@ redbutton:focus-visible {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+}
+.input-row-modify{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.input-row-mainpage{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .input-container,
@@ -327,7 +340,8 @@ redbutton:focus-visible {
 }
 
 .input-container {
-  flex: 1; /* Allow containers to grow and shrink */
+  width: 0;
+  flex: 1, 1, 0; /* Allow containers to grow and shrink */
   min-width: 280px; /* Minimum width before wrapping */
   position: relative;
   background-color: #242424;
@@ -531,3 +545,23 @@ redbutton:focus-visible {
   color: white;   
   cursor: pointer;
 }
+
+.alliance-buttons {
+  border-radius: 20px;
+  min-width: auto;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left:1vw;
+  margin-right: 1vw;
+  font-size:larger;
+}
+
+.centerize {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* yes i am aware this is garbage css leave me alone */

@@ -75,7 +75,7 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
       const ctx = canvasRef.current?.getContext('2d');
       if (ctx) {
         const image = new Image();
-        image.src = '/cresendoField.jpg'; 
+        image.src = '/reefscapeField.png'; 
         image.onload = () => {
           draw(image, ctx);
         }
@@ -87,7 +87,7 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
     const ctx = canvasRef.current?.getContext('2d');
     if (ctx) {
       const image = new Image();
-      image.src = '/cresendoField.jpg'; 
+      image.src = '/reefscapeField.png'; 
       image.onload = () => {
         draw(image, ctx);
       };

@@ -14,10 +14,18 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
   const [preload, setPreload] = useState(mainPageData.preload || false)
   const [noshow, setNoshow] = useState(mainPageData.noshow || false)
   const [robotPos, setRobotPos] = useState<{ x: number; y: number }>(mainPageData.robotPos || [Number, Number]);
+  const [redAllianceColor, setRedAllianceColor] = useState("");
+  const [blueAllianceColor, setBlueAllianceColor] = useState("");
   useEffect(() => {
     setMainPageData(oldData => ({...oldData, alliance, matchID, scouterName, teamID, robotPos, preload, noshow}))
   }, [alliance, matchID, scouterName, teamID, robotPos, preload, noshow])
 
+  if (alliance === "red"){
+    setRedAllianceColor("red")
+  }
+  else if (alliance === "blue") {
+
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission
@@ -27,35 +35,46 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="select-dropdown">
+        {/* <div className="select-dropdown">
         <label>Alliance: </label>
         <select name="alliance" id="alliance" value={alliance} onChange={(event) => setAlliance(event.target.value as Alliance)}>
           <option value={Alliance.NOT_SET} disabled>Select an alliance</option>
           <option value={Alliance.RED}>Red Alliance</option>
           <option value={Alliance.BLUE}>Blue Alliance</option>
         </select>
-        </div>
+        </div> */}
+
         <ul>
+          <div className="input-row-mainpage">
           <li>
             <div className="input-container">
             <label>Scouter Name: </label>
             <input name="Scouter Name" value={scouterName} onChange={e => setScouterName(e.target.value)}/>
             </div>
           </li>
-
           <li>
             <div className="input-container">
             <label>Match Number: </label>
             <input name="Match ID" value={matchID} type="number" onChange={e => setMatchID(e.target.value)}/>
             </div>
           </li>
+          </div>
+          <div className="input-row-modify">
+            <h3>Select Your Alliance:</h3>
+          <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.RED)} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
+            Red</button>
+          <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.BLUE)} style={{backgroundColor:alliance === Alliance.BLUE ? '#007bff' : '#4e4e4e'}}>
+            Blue</button>
+        </div>
+
+          <div className="centerize">
           <li>
           <div className="input-container">
             <label>Team ID ur scouting </label>
             <input id="teamID" name="TeamID" value={teamID} type="number" onChange={e => setTeamID(e.target.value)}/>
             </div>
           </li>
-        
+          
 
           <li>
             
@@ -77,6 +96,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
             </label>
             </div>
           </li>
+          </div>
 
           <li>
             <label>Robot Starting Position (Click to show)</label>
