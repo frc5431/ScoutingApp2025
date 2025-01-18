@@ -27,6 +27,10 @@ ul {
   margin: 0; 
 }
 
+h2 {
+  padding: 0;
+}
+
 textarea {
   resize: none;
   width: unset;
@@ -67,6 +71,11 @@ button {
   transition: border-color 0.25s;
 }
 
+
+.teleoptitles {
+  padding: 0;
+  margin: 0;
+}
 
 .imageStyle {
   display:flex;
@@ -135,6 +144,7 @@ button {
 
 .countertitle {
   margin-bottom: -20px;
+  margin-top: 0px;
 }
 
 .counterdisplay {
@@ -154,7 +164,7 @@ button {
   display:flex;
   padding:0px;
   gap: 20px;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .matchrow2 {
@@ -201,6 +211,12 @@ redbutton:focus-visible {
   display:flex;
   padding:0px;
   gap: 20px;
+}
+.firsttwoautoncounterpt2{
+  display:flex;
+  padding:0px;
+  gap: 20px;
+  justify-content: center; 
 }
 
 .radio{
@@ -371,6 +387,13 @@ redbutton:focus-visible {
 .input-container input:focus {
   outline: none;
   box-shadow: none;
+}
+
+.custom-checkbox-auton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .custom-checkbox {

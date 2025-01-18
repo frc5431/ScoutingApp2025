@@ -14,6 +14,10 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [autonAmp, setAutonAmp] = useState(autonData.autonAmp || 0);
   const [autonTrap, setAutonTrap] = useState(autonData.autonTrap || 0);
   const [leftStart, setLeftStart] = useState<string>(autonData.leftStart || 'NOT_CHANGED');
+  const [l1auton, setl1auton] = useState(autonData.l1 || 0);
+  const [l2auton, setl2auton] = useState(autonData.l2 || 0);
+  const [l3auton, setl3auton] = useState(autonData.l3 || 0);
+  const [l4auton, setl4auton] = useState(autonData.l4 || 0);
   const [resetTrigger, setResetTrigger] = useState(0);
 
   const leftStartOptions: Option = [
@@ -22,8 +26,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   ];
 
   useEffect(() => {
-    setAutonData(oldData => ({...oldData, autonPath, autonSpeaker, autonAmp, autonTrap, leftStart}))
-  }, [autonPath , autonSpeaker, autonAmp, autonTrap, leftStart])
+    setAutonData(oldData => ({...oldData, autonPath, autonSpeaker, autonAmp, autonTrap, leftStart, l1auton, l2auton, l3auton, l4auton}))
+  }, [autonPath , autonSpeaker, autonAmp, autonTrap, leftStart, l1auton, l2auton, l3auton, l4auton])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,21 +44,48 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
         <form onSubmit={handleSubmit}>
           <ul>
             <li>
+              <div className="firsttwoautoncounterpt2">
+                
+                <Counter
+                  name='L1'
+                  count={l1auton}
+                  onButtonUp={() => setl1auton(l1auton+1)}
+                  onButtonDown={() => {if (l1auton > 0) setl1auton(l1auton-1)}}
+                />
+                <Counter
+                  name='L2'
+                  count={l2auton}
+                  onButtonUp={() => setl2auton(l2auton+1)}
+                  onButtonDown={() => {if (l2auton > 0) setl1auton(l2auton-1)}}
+                />
+                <Counter
+                  name='L3'
+                  count={l3auton}
+                  onButtonUp={() => setl3auton(l3auton+1)}
+                  onButtonDown={() => {if (l3auton > 0) setl3auton(l3auton-1)}}
+                />
+                <Counter
+                  name='L4'
+                  count={l4auton}
+                  onButtonUp={() => setl4auton(l4auton+1)}
+                  onButtonDown={() => {if (l4auton > 0) setl4auton(l4auton-1)}}
+                />
+              </div>
               <div className="firsttwoautoncounters">
                 <Counter
-                  name='Speaker'
+                  name='De-Algae'
                   count={autonSpeaker}
                   onButtonUp={() => setAutonSpeaker(autonSpeaker+1)}
                   onButtonDown={() => {if (autonSpeaker > 0) setAutonSpeaker(autonSpeaker-1)}}
                 />
                 <Counter
-                  name='Amp'
+                  name='Algae Net'
                   count={autonAmp}
                   onButtonUp={() => setAutonAmp(autonAmp+1)}
                   onButtonDown={() => {if (autonAmp > 0) setAutonAmp(autonAmp-1)}}
                 />
                 <Counter
-                  name='Trap'
+                  name='Processor'
                   count={autonTrap}
                   onButtonUp={() => setAutonTrap(autonTrap+1)}
                   onButtonDown={() => {if (autonTrap > 0) setAutonTrap(autonTrap-1)}}

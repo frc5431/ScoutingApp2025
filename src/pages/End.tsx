@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import Notes from "../components/Notes";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
-import gambling from "../components/gambling";
 
 export interface endProps {
   endData: { [key: string]: any };

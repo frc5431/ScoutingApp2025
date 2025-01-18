@@ -22,8 +22,9 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   ];
   const [stage, setStage] = useState(matchData.stage || '');
   const stageOptions: Option = [
+    { label: 'Deep Climb', value: 'DeepClimb' },
+    { label: 'Shallow Climb', value: 'ShallowClimb' },
     { label: 'Park', value: 'Park' },
-    { label: 'Onstage', value: 'Onstage' },
     { label: 'None', value: 'None'}
   ];
   const [coopertition, setCoopertition] = useState(matchData.coopertition || '');
@@ -45,22 +46,30 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   return (
       <form onSubmit={handleSubmit}>
         <ul>
+          
           <li>
+          <h2 className="teleoptitles">Coral</h2>
             <div className="matchrow1">
             <Counter
-              name='Speaker'
+              name='L1'
               count={speakerScored}
               onButtonUp={() => setSpeakerScored(speakerScored+1)}
               onButtonDown={() => {if (speakerScored > 0) setSpeakerScored(speakerScored-1)}}
             />
             <Counter
-              name='Speaker (Amped)'
+              name='L2'
               count={speakerAmpScored}
               onButtonUp={() => setSpeakerAmpScored(speakerAmpScored+1)}
               onButtonDown={() => {if (speakerAmpScored > 0) setSpeakerAmpScored(speakerAmpScored-1)}}
             />
             <Counter
-              name='Amp'
+              name='L3'
+              count={ampScored}
+              onButtonUp={() => setAmpScored(ampScored+1)}
+              onButtonDown={() => {if (ampScored > 0) setAmpScored(ampScored-1)}}
+            />
+            <Counter
+              name='L4'
               count={ampScored}
               onButtonUp={() => setAmpScored(ampScored+1)}
               onButtonDown={() => {if (ampScored > 0) setAmpScored(ampScored-1)}}
@@ -87,9 +96,9 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
             />
             </div>
             <div className="matchrow3">
-              <RadioButtons vari={spotlight} setVari={setSpotlight} options={spotlightOptions} groupName="Spotlight"></RadioButtons>
-              <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Stage"></RadioButtons>
-              <RadioButtons vari={coopertition} setVari={setCoopertition} options={coopertitionOptions} groupName="Coopertition"></RadioButtons>
+              
+              <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
+              
             </div>
 
           </li>
