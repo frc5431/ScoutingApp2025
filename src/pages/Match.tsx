@@ -8,12 +8,15 @@ export interface matchProps {
 }
 
 const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
-  const [speakerScored, setSpeakerScored] = useState(matchData.speakerScored || 0);
-  const [speakerAmpScored, setSpeakerAmpScored] = useState(matchData.speakerAmpScored || 0);
-  const [ampScored, setAmpScored] = useState(matchData.ampScored || 0);
-  const [trapScored, setTrapScored] = useState(matchData.trapScored || 0);
-  const [timesAmp, setTimesAmp] = useState(matchData.timesAmp || 0);
-  const [shuttled, setShuttled] = useState(matchData.shuttled || 0);
+  const [l1Scored, setl1Scored] = useState(matchData.l1Scored || 0);
+  const [l2Scored, setl2Scored] = useState(matchData.l2Scored || 0);
+  const [l3Scored, setl3Scored] = useState(matchData.l3Scored || 0);
+  const [l4Scored, setl4Scored] = useState(matchData.l4Scored || 0);
+  const [netScoredHuman, setNetScoredHuman] = useState(matchData.netScoredHuman || 0);
+  const [netMissHuman, setNetMissHuman] = useState(matchData.netMissHuman || 0);
+  const [netScoredBot, setNetScoredBot] = useState(matchData.netScoredBot || 0);
+  const [netMissBot, setNetMissBot] = useState(matchData.netMissBot || 0);
+  const [processorScored, setProcessorScored] = useState(matchData.processorScored || 0);
 
   const [spotlight, setSpotlight] = useState(matchData.spotlight || '');
   const spotlightOptions: Option = [
@@ -34,9 +37,9 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   ];
 
   useEffect(() => {
-    setMatchData(oldData => ({...oldData, speakerAmpScored, ampScored, speakerScored, trapScored, timesAmp, shuttled, spotlight, stage, coopertition}))
+    setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition}))
     // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
-  }, [speakerAmpScored, ampScored, speakerScored, trapScored, timesAmp, shuttled, spotlight, stage, coopertition])
+  }, [l2Scored, l3Scored, l1Scored, l4Scored, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission
@@ -48,51 +51,65 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
         <ul>
           
           <li>
-          <h2 className="teleoptitles">Coral</h2>
             <div className="matchrow1">
             <Counter
               name='L1'
-              count={speakerScored}
-              onButtonUp={() => setSpeakerScored(speakerScored+1)}
-              onButtonDown={() => {if (speakerScored > 0) setSpeakerScored(speakerScored-1)}}
+              count={l1Scored}
+              onButtonUp={() => setl1Scored(l1Scored+1)}
+              onButtonDown={() => {if (l1Scored > 0) setl1Scored(l1Scored-1)}}
             />
             <Counter
               name='L2'
-              count={speakerAmpScored}
-              onButtonUp={() => setSpeakerAmpScored(speakerAmpScored+1)}
-              onButtonDown={() => {if (speakerAmpScored > 0) setSpeakerAmpScored(speakerAmpScored-1)}}
+              count={l2Scored}
+              onButtonUp={() => setl2Scored(l2Scored+1)}
+              onButtonDown={() => {if (l2Scored > 0) setl2Scored(l2Scored-1)}}
             />
             <Counter
               name='L3'
-              count={ampScored}
-              onButtonUp={() => setAmpScored(ampScored+1)}
-              onButtonDown={() => {if (ampScored > 0) setAmpScored(ampScored-1)}}
+              count={l3Scored}
+              onButtonUp={() => setl3Scored(l3Scored+1)}
+              onButtonDown={() => {if (l3Scored > 0) setl3Scored(l3Scored-1)}}
             />
             <Counter
               name='L4'
-              count={ampScored}
-              onButtonUp={() => setAmpScored(ampScored+1)}
-              onButtonDown={() => {if (ampScored > 0) setAmpScored(ampScored-1)}}
+              count={l4Scored}
+              onButtonUp={() => setl4Scored(l4Scored+1)}
+              onButtonDown={() => {if (l4Scored > 0) setl4Scored(l4Scored-1)}}
             />
             </div>
             <div className="matchrow2">
             <Counter
-              name='Trap'
-              count={trapScored}
-              onButtonUp={() => setTrapScored(trapScored+1)}
-              onButtonDown={() => {if (trapScored > 0) setTrapScored(trapScored-1)}}
+              name='Net Scored(🗿)'
+              count={netScoredHuman}
+              onButtonUp={() => setNetScoredHuman(netScoredHuman+1)}
+              onButtonDown={() => {if (netScoredHuman > 0) setNetScoredHuman(netScoredHuman-1)}}
             />
             <Counter
-              name='Amped Activated'
-              count={timesAmp}
-              onButtonUp={() => setTimesAmp(timesAmp+1)}
-              onButtonDown={() => {if (timesAmp > 0) setTimesAmp(timesAmp-1)}}
+              name='Net Miss(🗿)'
+              count={netMissHuman}
+              onButtonUp={() => setNetMissHuman(netMissHuman+1)}
+              onButtonDown={() => {if (netMissHuman > 0) setNetMissHuman(netMissHuman-1)}}
             />
             <Counter
-              name='Shuttled'
-              count={shuttled}
-              onButtonUp={() => setShuttled(shuttled+1)}
-              onButtonDown={() => {if (shuttled > 0) setShuttled(shuttled-1)}}
+              name='Net Scored(🤖)'
+              count={netScoredBot}
+              onButtonUp={() => setNetScoredBot(netScoredBot+1)}
+              onButtonDown={() => {if (netScoredBot > 0) setNetScoredBot(netScoredBot-1)}}
+            />
+            
+            </div>
+            <div className="matchrow3">
+            <Counter
+              name='Net Miss(🤖)'
+              count={netMissBot}
+              onButtonUp={() => setNetMissBot(netMissBot+1)}
+              onButtonDown={() => {if (netMissBot > 0) setNetMissBot(netMissBot-1)}}
+            />
+            <Counter
+              name='Processor'
+              count={processorScored}
+              onButtonUp={() => setProcessorScored(processorScored+1)}
+              onButtonDown={() => {if (processorScored > 0) setProcessorScored(processorScored-1)}}
             />
             </div>
             <div className="matchrow3">

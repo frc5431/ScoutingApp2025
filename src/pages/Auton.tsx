@@ -10,9 +10,9 @@ export interface autonProps {
 
 const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [autonPath, setAutonPath] = useState<{ x: number; y: number }[]>(autonData.autonPath || []);
-  const [autonSpeaker, setAutonSpeaker] = useState(autonData.autonSpeaker || 0);
-  const [autonAmp, setAutonAmp] = useState(autonData.autonAmp || 0);
-  const [autonTrap, setAutonTrap] = useState(autonData.autonTrap || 0);
+  const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
+  const [autonAlgaeNet, setAutonAlgaeNet] = useState(autonData.autonAlgaeNet || 0);
+  const [autonProcessor, setAutonProcessor] = useState(autonData.autonProcessor || 0);
   const [leftStart, setLeftStart] = useState<string>(autonData.leftStart || 'NOT_CHANGED');
   const [l1auton, setl1auton] = useState(autonData.l1 || 0);
   const [l2auton, setl2auton] = useState(autonData.l2 || 0);
@@ -26,8 +26,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   ];
 
   useEffect(() => {
-    setAutonData(oldData => ({...oldData, autonPath, autonSpeaker, autonAmp, autonTrap, leftStart, l1auton, l2auton, l3auton, l4auton}))
-  }, [autonPath , autonSpeaker, autonAmp, autonTrap, leftStart, l1auton, l2auton, l3auton, l4auton])
+    setAutonData(oldData => ({...oldData, autonPath, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton}))
+  }, [autonPath , autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -74,21 +74,21 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
               <div className="firsttwoautoncounters">
                 <Counter
                   name='De-Algae'
-                  count={autonSpeaker}
-                  onButtonUp={() => setAutonSpeaker(autonSpeaker+1)}
-                  onButtonDown={() => {if (autonSpeaker > 0) setAutonSpeaker(autonSpeaker-1)}}
+                  count={autonDeAlgae}
+                  onButtonUp={() => setAutonDeAlgae(autonDeAlgae+1)}
+                  onButtonDown={() => {if (autonDeAlgae > 0) setAutonDeAlgae(autonDeAlgae-1)}}
                 />
                 <Counter
                   name='Algae Net'
-                  count={autonAmp}
-                  onButtonUp={() => setAutonAmp(autonAmp+1)}
-                  onButtonDown={() => {if (autonAmp > 0) setAutonAmp(autonAmp-1)}}
+                  count={autonAlgaeNet}
+                  onButtonUp={() => setAutonAlgaeNet(autonAlgaeNet+1)}
+                  onButtonDown={() => {if (autonAlgaeNet > 0) setAutonAlgaeNet(autonAlgaeNet-1)}}
                 />
                 <Counter
                   name='Processor'
-                  count={autonTrap}
-                  onButtonUp={() => setAutonTrap(autonTrap+1)}
-                  onButtonDown={() => {if (autonTrap > 0) setAutonTrap(autonTrap-1)}}
+                  count={autonProcessor}
+                  onButtonUp={() => setAutonProcessor(autonProcessor+1)}
+                  onButtonDown={() => {if (autonProcessor > 0) setAutonProcessor(autonProcessor-1)}}
                 />
                 <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
               </div>
