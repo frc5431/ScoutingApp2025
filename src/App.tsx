@@ -60,7 +60,7 @@ function App() {
   return (
     <div className='grid'>
       
-      <h1 id='title' className="title">Deep Reef Scouting App</h1>
+      <h1 id='title' className="title">Reefscape Scouting App</h1>
 
       <button className='tabs' style={{backgroundColor:mainColorButton, filter:filtersettings}}
        onClick={() => {setPage("Mainpage"); }}>Main Page</button>

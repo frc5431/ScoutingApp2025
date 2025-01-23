@@ -94,7 +94,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
           </li>
           </div>
 
-          <li>
+          <li className="image">
             <label>Robot Starting Position (Click to show)</label>
             <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick>
           </li>

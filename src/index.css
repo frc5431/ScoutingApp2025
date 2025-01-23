@@ -18,6 +18,12 @@
   --background-color: #242424; /* Default color */
 }
 
+
+
+@media (orientation: Landscape) {
+  /* Is default, may change later for specific landscape tablet dimensions */
+}
+
 body {
   background-color: var(--background-color);
 }
@@ -73,7 +79,6 @@ button {
   
 }
 
-
 .teleoptitles {
   padding: 0;
   margin: 0;
@@ -128,10 +133,6 @@ button {
   height: 40px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-}
-
-.mngrtghfwevbcfs {
-  font-size: large;
 }
 
 .leftbutton {
@@ -591,10 +592,46 @@ redbutton:focus-visible {
   font-size:larger;
 }
 
+
 .centerize {
   justify-content: center;
   display: flex;
   align-items: center;
 }
 
-/* yes i am aware this is garbage css leave me alone */
+@media (orientation: Portrait) {
+  h3 {
+    font-size: 4vh;
+  }
+  
+  .alliance-buttons {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    margin-left: 5vw;
+    font-size: 3vh;
+    width: fit-content;
+  }
+  
+  .input-container {
+    font-size: 2rem;
+    width: 50vw;
+  }
+  .input-container input {
+    padding-bottom: 3vh;
+    font-size: 2rem;
+  }
+
+  .custom-checkbox {
+    font-size: 3.5vh;
+    margin: 2vw;
+  }
+  .checkmark {
+    scale: 2;
+  }
+  
+  .image {
+    font-size: 2.5vh;;
+  }
+}
