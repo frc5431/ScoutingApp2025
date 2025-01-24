@@ -63,7 +63,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
           </div>
           
 
-          <div className="input-row-evenly">
+          <div className="input-row-mainpage">
           <li>
           <div className="input-container">
             <label>Team Number</label>
@@ -72,13 +72,8 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
           </li>
           
 
-          <li>
-            
-           
-            
-          </li>
-
-          <li>
+        
+          <li className="fake-input-container">
           <div className="checkboxContainer">
             <label className="custom-checkbox">
             <input type="checkbox" checked={preload} onChange={e => setPreload(e.target.checked)}/>
@@ -95,7 +90,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
           </div>
 
           <li>
-            <label>Robot Starting Position (Click to show)</label>
+            <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click to show)</label>
             <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick>
           </li>
      </ul>

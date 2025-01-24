@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  display: flex;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -19,17 +19,9 @@ li {
   font-size: larger;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns:  1fr 1fr 1fr 1fr;
-  grid-template-rows: 12% 8% auto;
-  height: 100vh;
-  width: 100vh;
-  gap: 20px 10px;
-}
-
 .tabs {
   grid-row:2;
+  font-size: clamp(16px, 20px , 100px);
 }
 @keyframes outlinePulse {
   0% {
@@ -71,11 +63,6 @@ li {
 
 button {
   font-size: larger;
-}#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -139,14 +126,15 @@ ul {
 .grid {
   display: grid;
   grid-template-columns:  1fr 1fr 1fr 1fr;
-  grid-template-rows: 12% 8% auto;
+  grid-template-rows: 3% 8% auto;
   height: 100vh;
-  width: 100vh;
-  gap: 20px 10px;
+  width: 90vw;
+  gap: 10px 10px;
 }
 
 .tabs {
   grid-row:2;
+  text-align: center;
 }
 
 .mainContent {
