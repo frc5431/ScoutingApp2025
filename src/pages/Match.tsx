@@ -55,25 +55,25 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
             <Counter
               name='L1'
               count={l1Scored}
-              onButtonUp={() => setl1Scored(l1Scored+1)}
+              onButtonUp={() => {if (l1Scored < 99) setl1Scored(l1Scored+1)}}
               onButtonDown={() => {if (l1Scored > 0) setl1Scored(l1Scored-1)}}
             />
             <Counter
               name='L2'
               count={l2Scored}
-              onButtonUp={() => setl2Scored(l2Scored+1)}
+              onButtonUp={() => {if (l2Scored < 99) setl2Scored(l2Scored+1)}}
               onButtonDown={() => {if (l2Scored > 0) setl2Scored(l2Scored-1)}}
             />
             <Counter
               name='L3'
               count={l3Scored}
-              onButtonUp={() => setl3Scored(l3Scored+1)}
+              onButtonUp={() => {if (l3Scored < 99) setl3Scored(l3Scored+1)}}
               onButtonDown={() => {if (l3Scored > 0) setl3Scored(l3Scored-1)}}
             />
             <Counter
               name='L4'
               count={l4Scored}
-              onButtonUp={() => setl4Scored(l4Scored+1)}
+              onButtonUp={() => {if(l4Scored < 99) setl4Scored(l4Scored+1)}}
               onButtonDown={() => {if (l4Scored > 0) setl4Scored(l4Scored-1)}}
             />
             </div>
@@ -81,19 +81,19 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
             <Counter
               name='Net Scored(🗿)'
               count={netScoredHuman}
-              onButtonUp={() => setNetScoredHuman(netScoredHuman+1)}
+              onButtonUp={() => {if (netScoredHuman < 99) setNetScoredHuman(netScoredHuman+1)}}
               onButtonDown={() => {if (netScoredHuman > 0) setNetScoredHuman(netScoredHuman-1)}}
             />
             <Counter
               name='Net Miss(🗿)'
               count={netMissHuman}
-              onButtonUp={() => setNetMissHuman(netMissHuman+1)}
+              onButtonUp={() => {if (netMissHuman < 99) setNetMissHuman(netMissHuman+1)}}
               onButtonDown={() => {if (netMissHuman > 0) setNetMissHuman(netMissHuman-1)}}
             />
             <Counter
               name='Net Scored(🤖)'
               count={netScoredBot}
-              onButtonUp={() => setNetScoredBot(netScoredBot+1)}
+              onButtonUp={() => {if (netScoredBot < 99) setNetScoredBot(netScoredBot+1)}}
               onButtonDown={() => {if (netScoredBot > 0) setNetScoredBot(netScoredBot-1)}}
             />
             
@@ -102,13 +102,13 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
             <Counter
               name='Net Miss(🤖)'
               count={netMissBot}
-              onButtonUp={() => setNetMissBot(netMissBot+1)}
+              onButtonUp={() => {if (netMissBot < 99) setNetMissBot(netMissBot+1)}}
               onButtonDown={() => {if (netMissBot > 0) setNetMissBot(netMissBot-1)}}
             />
             <Counter
               name='Processor'
               count={processorScored}
-              onButtonUp={() => setProcessorScored(processorScored+1)}
+              onButtonUp={() => {if (processorScored < 99) setProcessorScored(processorScored+1)}}
               onButtonDown={() => {if (processorScored > 0) setProcessorScored(processorScored-1)}}
             />
             </div>

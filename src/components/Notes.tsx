@@ -14,7 +14,7 @@ const Notes: React.FC<notesProps> = ({ notes, setNotes }: notesProps) => {
 
   return (
     <>
-      {!revealNotes && <button onClick={toggleRevealNotes}>Notes</button>}
+      {!revealNotes && <button onClick={toggleRevealNotes} style={{fontSize:'1.4em', backgroundColor:'#222222'}}>Notes</button>}
 
       {revealNotes && (
         <div className="BOB">

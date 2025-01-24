@@ -44,30 +44,30 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
         <form onSubmit={handleSubmit}>
           <ul>
             <li>
-              <div className="firsttwoautoncounterpt2">
+              <div className="firsttwoautoncounters">
                 
                 <Counter
                   name='L1'
                   count={l1auton}
-                  onButtonUp={() => setl1auton(l1auton+1)}
+                  onButtonUp={() => {if (l1auton < 99) setl1auton(l1auton+1)}}
                   onButtonDown={() => {if (l1auton > 0) setl1auton(l1auton-1)}}
                 />
                 <Counter
                   name='L2'
                   count={l2auton}
-                  onButtonUp={() => setl2auton(l2auton+1)}
+                  onButtonUp={() => {if (l2auton < 99) setl2auton(l2auton+1)}}
                   onButtonDown={() => {if (l2auton > 0) setl1auton(l2auton-1)}}
                 />
                 <Counter
                   name='L3'
                   count={l3auton}
-                  onButtonUp={() => setl3auton(l3auton+1)}
+                  onButtonUp={() => {if (l3auton < 99) setl3auton(l3auton+1)}}
                   onButtonDown={() => {if (l3auton > 0) setl3auton(l3auton-1)}}
                 />
                 <Counter
                   name='L4'
                   count={l4auton}
-                  onButtonUp={() => setl4auton(l4auton+1)}
+                  onButtonUp={() => {if (l4auton < 99) setl4auton(l4auton+1)}}
                   onButtonDown={() => {if (l4auton > 0) setl4auton(l4auton-1)}}
                 />
               </div>
@@ -75,29 +75,31 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                 <Counter
                   name='De-Algae'
                   count={autonDeAlgae}
-                  onButtonUp={() => setAutonDeAlgae(autonDeAlgae+1)}
+                  onButtonUp={() => {if (autonDeAlgae < 99) setAutonDeAlgae(autonDeAlgae+1)}}
                   onButtonDown={() => {if (autonDeAlgae > 0) setAutonDeAlgae(autonDeAlgae-1)}}
                 />
                 <Counter
                   name='Algae Net'
                   count={autonAlgaeNet}
-                  onButtonUp={() => setAutonAlgaeNet(autonAlgaeNet+1)}
+                  onButtonUp={() => {if (autonAlgaeNet < 99) setAutonAlgaeNet(autonAlgaeNet+1)}}
                   onButtonDown={() => {if (autonAlgaeNet > 0) setAutonAlgaeNet(autonAlgaeNet-1)}}
                 />
                 <Counter
                   name='Processor'
                   count={autonProcessor}
-                  onButtonUp={() => setAutonProcessor(autonProcessor+1)}
+                  onButtonUp={() => {if (autonProcessor < 99) setAutonProcessor(autonProcessor+1)}}
                   onButtonDown={() => {if (autonProcessor > 0) setAutonProcessor(autonProcessor-1)}}
                 />
-                <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
               </div>
             </li>
             <li>
+            <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
+            </li>
+            <div>
               <label>Robot Auton Path (Click to show path): </label>
               <button className="resetbutton" type="button" onClick={handleResetPath}>Reset Path</button>
               <ImageClick type="path" autonPath={autonPath} setAutonPath={setAutonPath} resetTrigger={resetTrigger} />
-            </li>
+            </div>
           </ul>
         </form>
       </div>

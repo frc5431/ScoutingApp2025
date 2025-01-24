@@ -60,26 +60,23 @@ const End: React.FC<endProps> = ({
           e.preventDefault();
         }}
       >
+        
         <Notes notes={notes} setNotes={setNotes}></Notes>
         <ul>
           <div className="input-row">
             <li>
               <div className="input-container">
                 <div className="inputcolorredpointscool">
-                  <div className="inputcontainerendscreenextension">
                     <label>Red Points</label>
                     <input name="Red Points" value={redPoints} onChange={(e) => setRedPoints(e.target.value)} type={"number"} />
-                  </div>
                 </div>
               </div>
             </li>
             <li>
               <div className="input-container">
                 <div className="inputcolorbluepointscool">
-                  <div className="inputcontainerendscreenextension">
                     <label>Blue Points</label>
                     <input name="Blue Points" value={bluePoints} onChange={(e) => setBluePoints(e.target.value)} type={"number"} />
-                  </div>
                 </div>
               </div>
             </li>
@@ -87,20 +84,14 @@ const End: React.FC<endProps> = ({
           <div className="input-row">
             <li>
               <div className="input-container">
-                <div className="inputcontainerendscreenextension">
                   <label>Penalties</label>
                   <input name="Penalties" value={penalties} onChange={(e) => setPenalties(e.target.value)} type={"number"} />
-                </div>
               </div>
             </li>
             <li>
               <div className="input-container">
-                <div>
-                  <div className="inputcontainerendscreenextension">
                     <label>RP</label>
                     <input name="RP" value={RP} onChange={(e) => setRP(e.target.value)} type={"number"} />
-                  </div>
-                </div>
               </div>
             </li>
           </div>
@@ -113,7 +104,7 @@ const End: React.FC<endProps> = ({
             </li>
           </div>
         </ul>
-        <button onClick={handleSubmit}>SUBMIT!</button>
+        <button onClick={handleSubmit} style={{fontSize:'1.5em'}}>SUBMIT!</button>
       </form>
 
       {submitted && (
