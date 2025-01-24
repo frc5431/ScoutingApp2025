@@ -31,10 +31,18 @@ h2 {
   padding: 0;
 }
 
+h3 {
+  font-size: xx-large;
+}
+
 textarea {
   resize: none;
   width: unset;
   height: unset;
+}
+
+label {
+  font-size: xx-large;
 }
 
 a {
@@ -55,7 +63,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 4em;
   line-height: 1.1;
 }
 
@@ -70,7 +78,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
   color: white;
-  
+  font-size:xx-large;
 }
 
 
@@ -340,6 +348,7 @@ redbutton:focus-visible {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 4vw;
   align-items: center;
 }
 
@@ -353,7 +362,7 @@ redbutton:focus-visible {
 .input-row-mainpage{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -368,14 +377,14 @@ redbutton:focus-visible {
 .input-container {
   width: 0;
   flex: 1, 1, 0; /* Allow containers to grow and shrink */
-  min-width: 280px; /* Minimum width before wrapping */
+  min-width: 50vw; /* Minimum width before wrapping */
   position: relative;
   background-color: #242424;
   border-radius: 20px;
 }
 
 .input-container input {
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: normal;
   width: 100%;
   padding: 8px 10px;
@@ -409,18 +418,30 @@ redbutton:focus-visible {
   max-width: 270px;
 }
 
-.custom-checkbox input {
-  display: none; /* Hide the default checkbox */
+.custom-checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .checkmark {
-  width: 20px; /* Size of the checkbox */
-  height: 20px; /* Size of the checkbox */
+  width: 40px; /* Size of the checkbox */
+  height: 40px; /* Size of the checkbox */
   background-color: #242424; /* Background color when unchecked */
   border-radius: 4px; /* Rounded corners */
   margin-right: 10px; /* Spacing between checkbox and label */
   position: relative;
   transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
 .custom-checkbox input:checked + .checkmark {
@@ -430,25 +451,20 @@ redbutton:focus-visible {
 .checkmark:after {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
+  display: none; /* Hide by default */
+  left: 50%; /* Center horizontally */
+  top: 40%; /* Center vertically */
+  width: 15px;
+  height: 25px;
   border: solid white; /* Checkmark color */
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  opacity: 0; /* Hide by default */
+  border-width: 0 3px 3px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
   transition: opacity 0.2s;
 }
 
-.checkboxtext {
-  margin-right: 2px;
-}
-
 .custom-checkbox input:checked + .checkmark:after {
-  opacity: 1; /* Show checkmark when checked */
+  display: block; /* Show when checkbox is checked */
 }
-
 .checkboxContainer {
   display: flex; 
   justify-content: center; 
@@ -588,7 +604,7 @@ redbutton:focus-visible {
   margin-bottom: 1vh;
   margin-left:1vw;
   margin-right: 1vw;
-  font-size:larger;
+  
 }
 
 .centerize {

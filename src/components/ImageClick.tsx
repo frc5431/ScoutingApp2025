@@ -16,14 +16,14 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
   const draw = (image: HTMLImageElement, ctx: CanvasRenderingContext2D) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.fillStyle = 'purple';
+    ctx.fillStyle = 'red';
     dotPositions.forEach(({ x, y }) => {
       ctx.beginPath();
-      ctx.arc(x, y, 8, 0, 2 * Math.PI);
+      ctx.arc(x, y, 20, 0, 2 * Math.PI);
       ctx.fill();
       if (dotPositions.length > 1) {
-        ctx.strokeStyle = 'teal';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 8;
         
         for (let i = 0; i < dotPositions.length - 1; i++) {
           const start = dotPositions[i];
@@ -40,10 +40,10 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
           ctx.rotate(angle);
           ctx.beginPath();
           ctx.moveTo(0, 0);
-          ctx.lineTo(-15, -7);
-          ctx.lineTo(-15, 7);
+          ctx.lineTo(-30, -14);
+          ctx.lineTo(-30, 14);
           ctx.closePath();
-          ctx.fillStyle = 'teal';
+          ctx.fillStyle = 'white';
           ctx.fill();
           ctx.restore();
         }
@@ -102,8 +102,8 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
     <div>
       <canvas
         ref={canvasRef}
-        width={600}
-        height={300}
+        width={900}
+        height={450}
         style={{ border: '1px solid black', borderRadius: '40px'}}
         onClick={handleClick}
       />
