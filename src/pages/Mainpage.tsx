@@ -2,22 +2,23 @@ import React, { useEffect, useState } from "react";
 import ImageClick from "../components/ImageClick";
 
 export interface mainpageProps {
-  mainPageData: {[key:string]: any};
-  setMainPageData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
+  mainpageData: {[key:string]: any};
+  setMainpageData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
 }
 
-const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: mainpageProps) => {
-  const [matchID, setMatchID] = useState(mainPageData.matchID || '');
-  const [scouterName, setScouterName] = useState(mainPageData.scouterName || '');
-  const [alliance, setAlliance] = useState(mainPageData.alliance || Alliance.NOT_SET);
-  const [teamID, setTeamID] = useState(mainPageData.teamID || '');
-  const [preload, setPreload] = useState(mainPageData.preload || false);
-  const [noshow, setNoshow] = useState(mainPageData.noshow || false);
-  const [robotPos, setRobotPos] = useState<{ x: number; y: number }>(mainPageData.robotPos || [Number, Number]);
+const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: mainpageProps) => {
+  const [matchID, setMatchID] = useState(mainpageData.matchID || '');
+  const [compDay, setComPDay] = useState<string>(mainpageData.compDay || '');
+  const [scouterName, setScouterName] = useState(mainpageData.scouterName || '');
+  const [alliance, setAlliance] = useState(mainpageData.alliance || Alliance.NOT_SET);
+  const [teamID, setTeamID] = useState(mainpageData.teamID || '');
+  const [preload, setPreload] = useState(mainpageData.preload || false);
+  const [noshow, setNoshow] = useState(mainpageData.noshow || false);
+  const [robotPos, setRobotPos] = useState<{ x: number; y: number }>(mainpageData.robotPos || [Number, Number]);
   
   useEffect(() => {
-    setMainPageData(oldData => ({...oldData, alliance, matchID, scouterName, teamID, robotPos, preload, noshow}))
-  }, [alliance, matchID, scouterName, teamID, robotPos, preload, noshow])
+    setMainpageData(oldData => ({...oldData, alliance, matchID, compDay, scouterName, teamID, robotPos, preload, noshow}))
+  }, [alliance, matchID, compDay, scouterName, teamID, robotPos, preload, noshow])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission
@@ -38,12 +39,18 @@ const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: main
 
         <ul>
 
-        <div className="input-row-modify">
-            <h3>Select Your Alliance:</h3>
+        <div className="input-row-mainpage">
+          <div className="fake-input-container">
+            <h3 style={{fontSize: "1.3em"}}>Alliance:</h3>
           <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.RED)} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
             Red</button>
           <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.BLUE)} style={{backgroundColor:alliance === Alliance.BLUE ? '#007bff' : '#4e4e4e'}}>
             Blue</button>
+          </div>
+          <div className="input-container">
+            <label>Comp Day</label>
+            <input name="Comp Day" value={compDay} onChange={e => setComPDay(e.target.value)}/>
+            </div>
         </div>
 
           <div className="input-row-mainpage">
