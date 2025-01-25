@@ -96,8 +96,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
             <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
             </li>
             <div>
-              <label>Robot Auton Path (Click to show path): </label>
-              <button className="resetbutton" type="button" onClick={handleResetPath}>Reset Path</button>
+              <label style={{fontSize:'1.5em'}} >Robot Auton Path (Click to show path): </label>
+              <button style={{fontSize:'1.5em'}} className="resetbutton" type="button" onClick={handleResetPath}>Reset Path</button>
               <ImageClick type="path" autonPath={autonPath} setAutonPath={setAutonPath} resetTrigger={resetTrigger} />
             </div>
           </ul>
