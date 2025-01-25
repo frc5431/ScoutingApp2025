@@ -27,7 +27,7 @@ const End: React.FC<endProps> = ({
   setMatchData,
   setPage
 }: endProps) => {
-  const [notes, setNotes] = useState(endData.notes || "");
+  const [notes, setNotes] = useState<string>(endData.notes || "");
   const [redPoints, setRedPoints] = useState(endData.redPoints || '');
   const [bluePoints, setBluePoints] = useState(endData.bluePoints || '');
   const [penalties, setPenalties] = useState(endData.penalties || '');
@@ -141,15 +141,23 @@ const End: React.FC<endProps> = ({
         </div>
       </form>
 
-      {submitted && (
+     {submitted && (
+      notes !== "" ? (
         <div className="popup-overlay">
           <div className="popup-container">
             <QRCode value={JSON.stringify(allData)} />
             <button className="exit-button" onClick={() => {hidePopup("QRCODE")}}>EXIT</button>
           </div>
         </div>
-      )}
-
+      ) : (
+        <div className="popup-overlay">
+          <div className="popup-container" style={{color: "black"}}>
+            <h3>DO NOTES TO PICK UP A DUCK AND SUBMIT</h3>
+            <img src="src\assets\pickupduck.jpg" alt="Pick up a duck" />
+            <button className="exit-button" onClick={() => {hidePopup("QRCODE")}}>EXIT</button>
+          </div>
+        </div>
+      ))}
       {
         clearedConfirmed && (
         <div className="popup-overlay">
@@ -159,7 +167,7 @@ const End: React.FC<endProps> = ({
             <button style={{margin:'1vw', backgroundColor:'green', fontSize:'2em'}} onClick={resetValues}>Yes</button>
             <button style={{margin:'1vw', backgroundColor:'red', fontSize:'2em'}} onClick={() => {hidePopup("CLEAR")}}>No</button>
         </div>
-</div>
+        </div>
         </div>
         )
       }

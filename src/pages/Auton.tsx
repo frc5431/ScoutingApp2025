@@ -23,7 +23,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [leftStart, setLeftStart] = useState<string>(autonData.leftStart || 'NOT_CHANGED');
 
 
-  const [autonPathNotes, setAutonPathNotes] = useState(autonData.autonPathNotes || "");
+  const [autonPathNotes, setAutonPathNotes] = useState<string>(autonData.autonPathNotes || "");
 
   const leftStartOptions: Option = [
     { label: 'Yes', value: 'Yes' },
