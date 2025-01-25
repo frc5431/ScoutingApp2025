@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ImageClick from "../components/ImageClick";
 import Counter from '../components/Counter';
 import RadioButtons, {Option} from "../components/radioButtons/radioButtons";
+import Notes from "../components/Notes";
 
 export interface autonProps {
   autonData: {[key: string]: any};
@@ -9,10 +10,10 @@ export interface autonProps {
 }
 
 const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
-  const [l1auton, setl1auton] = useState(autonData.l1 || 0);
-  const [l2auton, setl2auton] = useState(autonData.l2 || 0);
-  const [l3auton, setl3auton] = useState(autonData.l3 || 0);
-  const [l4auton, setl4auton] = useState(autonData.l4 || 0);
+  const [l1auton, setl1auton] = useState(autonData.l1auton || 0);
+  const [l2auton, setl2auton] = useState(autonData.l2auton || 0);
+  const [l3auton, setl3auton] = useState(autonData.l3auton || 0);
+  const [l4auton, setl4auton] = useState(autonData.l4auton || 0);
 
   const [autonCoralMissed, setAutonCoralMissed] = useState(autonData.autonCoralMissed    || 0);
   const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
@@ -22,7 +23,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [leftStart, setLeftStart] = useState<string>(autonData.leftStart || 'NOT_CHANGED');
 
 
-  const [autonPath, setAutonPath] = useState<{ x: number; y: number }[]>(autonData.autonPath || []);
+  const [autonPathNotes, setAutonPathNotes] = useState(autonData.autonPathNotes || "");
 
   const leftStartOptions: Option = [
     { label: 'Yes', value: 'Yes' },
@@ -33,17 +34,13 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
 
 
   useEffect(() => {
-    setAutonData(oldData => ({...oldData, autonPath, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton, autonCoralMissed}))
-  }, [autonPath , autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton, autonCoralMissed])
+    setAutonData(oldData => ({...oldData, autonPathNotes, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton, autonCoralMissed}))
+  }, [autonPathNotes, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton, autonCoralMissed])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 
-  const handleResetPath = () => {
-    setAutonPath([]);
-    setResetTrigger(prev => prev + 1);
-  };
 
   return (
     <>
@@ -109,9 +106,10 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
             <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
             </li>
             <div>
-              <label style={{fontSize:'1.5em'}} >Robot Auton Path (Click to show path): </label>
-              <button style={{fontSize:'1.5em'}} className="resetbutton" type="button" onClick={handleResetPath}>Reset Path</button>
-              <ImageClick type="path" autonPath={autonPath} setAutonPath={setAutonPath} resetTrigger={resetTrigger} />
+              <label style={{fontSize:'2em'}} >Robot Auton Path (Describe it; ie- went to L1; Say if it was good and successful): </label>
+              <div style={{margin: "10px"}}>
+                <Notes notes={autonPathNotes} setNotes={setAutonPathNotes}></Notes>
+              </div>
             </div>
           </ul>
         </form>
