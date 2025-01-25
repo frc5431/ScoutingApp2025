@@ -9,21 +9,27 @@ export interface autonProps {
 }
 
 const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
-  const [autonPath, setAutonPath] = useState<{ x: number; y: number }[]>(autonData.autonPath || []);
-  const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
-  const [autonAlgaeNet, setAutonAlgaeNet] = useState(autonData.autonAlgaeNet || 0);
-  const [autonProcessor, setAutonProcessor] = useState(autonData.autonProcessor || 0);
-  const [leftStart, setLeftStart] = useState<string>(autonData.leftStart || 'NOT_CHANGED');
   const [l1auton, setl1auton] = useState(autonData.l1 || 0);
   const [l2auton, setl2auton] = useState(autonData.l2 || 0);
   const [l3auton, setl3auton] = useState(autonData.l3 || 0);
   const [l4auton, setl4auton] = useState(autonData.l4 || 0);
-  const [resetTrigger, setResetTrigger] = useState(0);
+
+  const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
+  const [autonAlgaeNet, setAutonAlgaeNet] = useState(autonData.autonAlgaeNet || 0);
+  const [autonProcessor, setAutonProcessor] = useState(autonData.autonProcessor || 0);
+  
+  const [leftStart, setLeftStart] = useState<string>(autonData.leftStart || 'NOT_CHANGED');
+
+
+  const [autonPath, setAutonPath] = useState<{ x: number; y: number }[]>(autonData.autonPath || []);
 
   const leftStartOptions: Option = [
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' },
   ];
+
+  const [resetTrigger, setResetTrigger] = useState(0);
+
 
   useEffect(() => {
     setAutonData(oldData => ({...oldData, autonPath, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton}))

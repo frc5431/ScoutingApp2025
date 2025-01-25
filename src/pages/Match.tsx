@@ -19,11 +19,6 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   const [netMissBot, setNetMissBot] = useState(matchData.netMissBot || 0);
   const [processorScored, setProcessorScored] = useState(matchData.processorScored || 0);
 
-  const [spotlight, setSpotlight] = useState(matchData.spotlight || '');
-  const spotlightOptions: Option = [
-    { label: 'Yes', value: 'Yes' },
-    { label: 'No', value: 'No' }
-  ];
   const [stage, setStage] = useState(matchData.stage || '');
   const stageOptions: Option = [
     { label: 'Deep Climb', value: 'DeepClimb' },
@@ -31,16 +26,12 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
     { label: 'Park', value: 'Park' },
     { label: 'None', value: 'None'}
   ];
-  const [coopertition, setCoopertition] = useState(matchData.coopertition || '');
-  const coopertitionOptions: Option = [
-    { label: 'Yes', value: 'Yes' },
-    { label: 'No', value: 'No' }
-  ];
+ 
 
   useEffect(() => {
-    setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition}))
+    setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage}))
     // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
-  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition])
+  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission

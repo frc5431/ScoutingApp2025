@@ -32,13 +32,13 @@ const End: React.FC<endProps> = ({
   const [penalties, setPenalties] = useState(endData.penalties || '');
   const [RP, setRP] = useState(endData.RP || '');
   const [deactivated, setDeactivated] = useState(endData.deactivated || "");
-
+  const [playedDefense, setPlayedDefense] = useState(endData.playedDefense || "");
+  
   const deactivatedOptions: Option = [
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' }
   ];
 
-  const [playedDefense, setPlayedDefense] = useState(endData.playedDefense || "");
   const playedDefenseOptions: Option = [
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' }

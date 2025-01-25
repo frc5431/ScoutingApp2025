@@ -7,12 +7,12 @@ export interface mainpageProps {
 }
 
 const Mainpage: React.FC<mainpageProps> = ({mainPageData, setMainPageData}: mainpageProps) => {
-  const [alliance, setAlliance] = useState(mainPageData.alliance || Alliance.NOT_SET)
   const [matchID, setMatchID] = useState(mainPageData.matchID || '');
-  const [scouterName, setScouterName] = useState(mainPageData.scouterName || '')
-  const [teamID, setTeamID] = useState(mainPageData.teamID || '')
-  const [preload, setPreload] = useState(mainPageData.preload || false)
-  const [noshow, setNoshow] = useState(mainPageData.noshow || false)
+  const [scouterName, setScouterName] = useState(mainPageData.scouterName || '');
+  const [alliance, setAlliance] = useState(mainPageData.alliance || Alliance.NOT_SET);
+  const [teamID, setTeamID] = useState(mainPageData.teamID || '');
+  const [preload, setPreload] = useState(mainPageData.preload || false);
+  const [noshow, setNoshow] = useState(mainPageData.noshow || false);
   const [robotPos, setRobotPos] = useState<{ x: number; y: number }>(mainPageData.robotPos || [Number, Number]);
   
   useEffect(() => {
