@@ -14,6 +14,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [l3auton, setl3auton] = useState(autonData.l3 || 0);
   const [l4auton, setl4auton] = useState(autonData.l4 || 0);
 
+  const [autonCoralMissed, setAutonCoralMissed] = useState(autonData.autonCoralMissed    || 0);
   const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
   const [autonAlgaeNet, setAutonAlgaeNet] = useState(autonData.autonAlgaeNet || 0);
   const [autonProcessor, setAutonProcessor] = useState(autonData.autonProcessor || 0);
@@ -32,8 +33,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
 
 
   useEffect(() => {
-    setAutonData(oldData => ({...oldData, autonPath, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton}))
-  }, [autonPath , autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton])
+    setAutonData(oldData => ({...oldData, autonPath, autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton, autonCoralMissed}))
+  }, [autonPath , autonDeAlgae, autonAlgaeNet, autonProcessor, leftStart, l1auton, l2auton, l3auton, l4auton, autonCoralMissed])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -78,6 +79,12 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                 />
               </div>
               <div className="firsttwoautoncounters">
+                <Counter
+                  name='Coral Missed'
+                  count={autonCoralMissed}
+                  onButtonUp={() => {if (autonCoralMissed < 99) setAutonCoralMissed(autonCoralMissed+1)}}
+                  onButtonDown={() => {if (autonCoralMissed > 0) setAutonCoralMissed(autonCoralMissed-1)}}
+                />
                 <Counter
                   name='De-Algae'
                   count={autonDeAlgae}
