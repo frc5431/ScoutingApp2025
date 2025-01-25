@@ -80,12 +80,6 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
             </div>
             <div className="matchrow">
             <Counter
-              name='Coral Missed'
-              count={coralMissed}
-              onButtonUp={() => {if(coralMissed < 99) setCoralMissed(coralMissed+1)}}
-              onButtonDown={() => {if (coralMissed > 0) setCoralMissed(coralMissed-1)}}
-            />
-            <Counter
               name='Net Scored(🗿)'
               count={netScoredHuman}
               onButtonUp={() => {if (netScoredHuman < 99) setNetScoredHuman(netScoredHuman+1)}}
@@ -97,7 +91,12 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
               onButtonUp={() => {if (netMissHuman < 99) setNetMissHuman(netMissHuman+1)}}
               onButtonDown={() => {if (netMissHuman > 0) setNetMissHuman(netMissHuman-1)}}
             />
-            
+            <Counter
+              name='Coral Missed'
+              count={coralMissed}
+              onButtonUp={() => {if(coralMissed < 99) setCoralMissed(coralMissed+1)}}
+              onButtonDown={() => {if (coralMissed > 0) setCoralMissed(coralMissed-1)}}
+            />
             </div>
             <div className="matchrow">
             <Counter
