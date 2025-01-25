@@ -6,18 +6,25 @@ import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
 export interface endProps {
   endData: { [key: string]: any };
   setEndData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
-
   mainpageData: { [key: string]: any };
+  setMainpageData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
   autonData: { [key: string]: any };
+  setAutonData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
   matchData: { [key: string]: any };
+  setMatchData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
+  setPage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const End: React.FC<endProps> = ({
   endData,
   setEndData,
   mainpageData,
+  setMainpageData,
   autonData,
+  setAutonData,
   matchData,
+  setMatchData,
+  setPage
 }: endProps) => {
   const [notes, setNotes] = useState(endData.notes || "");
   const [redPoints, setRedPoints] = useState(endData.redPoints || '');
@@ -25,6 +32,7 @@ const End: React.FC<endProps> = ({
   const [penalties, setPenalties] = useState(endData.penalties || '');
   const [RP, setRP] = useState(endData.RP || '');
   const [deactivated, setDeactivated] = useState(endData.deactivated || "");
+
   const deactivatedOptions: Option = [
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' }
@@ -37,8 +45,9 @@ const End: React.FC<endProps> = ({
   ];
 
   const [submitted, setSubmitted] = useState(false);
-  const [allData, setAllData] = useState<{ [key: string]: any }>();
+  const [clearedConfirmed, setClearedConfirmed] = useState(false);
 
+  const [allData, setAllData] = useState<{ [key: string]: any }>();
   useEffect(() => {
     setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated }));
   }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated]);
@@ -49,9 +58,26 @@ const End: React.FC<endProps> = ({
     setSubmitted(true);
   };
 
-  const hideQR = () => {
-    setSubmitted(false)
+  const resetValues = () => {
+    setMainpageData({})
+    setMatchData({})
+    setAutonData({})
+    setEndData({})
+    
+    setPage("Mainpage")
   }
+  const hidePopup = (popup: string) => {
+    switch (popup) {
+      case "QRCODE":
+        setSubmitted(false);
+      case "CLEAR":
+        setClearedConfirmed(false);
+      default:
+        console.log(popup + " NOT VALUE");
+    }
+      
+  }
+  
 
   return (
     <>
@@ -104,17 +130,36 @@ const End: React.FC<endProps> = ({
             </li>
           </div>
         </ul>
-        <button onClick={handleSubmit} style={{fontSize:'1.5em'}}>SUBMIT!</button>
+        <div>
+           <button onClick={handleSubmit} className="submitButton">SUBMIT!</button>
+        </div>
+        <div>
+          <button onClick={() => (setClearedConfirmed(true))} className="clearButton">CLEAR</button>
+        </div>
       </form>
 
       {submitted && (
-        <div className="qr-code-overlay">
-          <div className="qr-code-container">
+        <div className="popup-overlay">
+          <div className="popup-container">
             <QRCode value={JSON.stringify(allData)} />
-            <button className="exit-button" onClick={hideQR}>EXIT</button>
+            <button className="exit-button" onClick={() => {hidePopup("QRCODE")}}>EXIT</button>
           </div>
         </div>
       )}
+
+      {
+        clearedConfirmed && (
+        <div className="popup-overlay">
+          <div style={{flexDirection:"column"}}>
+            <h3>Are you sure you want to <strong style={{color:'red'}}>clear</strong>?</h3>
+          <div className="popup-container" style={{flexDirection: "row", justifyContent:'space-between'}}>
+            <button style={{margin:'1vw', backgroundColor:'green', fontSize:'2em'}} onClick={resetValues}>Yes</button>
+            <button style={{margin:'1vw', backgroundColor:'red', fontSize:'2em'}} onClick={() => {hidePopup("CLEAR")}}>No</button>
+        </div>
+</div>
+        </div>
+        )
+      }
     </>
   );
 };

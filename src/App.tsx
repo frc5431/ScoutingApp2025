@@ -98,7 +98,7 @@ function App() {
       {currentPage == "End" && (
         
         <div className='mainContent'>
-          <End mainpageData={mainpageData} autonData={autonData} matchData={matchData} endData={endData} setEndData={setEndData}></End>
+          <End mainpageData={mainpageData} setMainpageData={setMainpageData} autonData={autonData} setAutonData={setAutonData} matchData={matchData} setMatchData={setMatchData} endData={endData} setEndData={setEndData} setPage={setPage}></End>
         </div>
         
       )}

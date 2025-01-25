@@ -12,6 +12,7 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   const [l2Scored, setl2Scored] = useState(matchData.l2Scored || 0);
   const [l3Scored, setl3Scored] = useState(matchData.l3Scored || 0);
   const [l4Scored, setl4Scored] = useState(matchData.l4Scored || 0);
+  const [coralMissed, setCoralMissed] = useState(matchData.coralMissed || 0);
   const [netScoredHuman, setNetScoredHuman] = useState(matchData.netScoredHuman || 0);
   const [netMissHuman, setNetMissHuman] = useState(matchData.netMissHuman || 0);
   const [netScoredBot, setNetScoredBot] = useState(matchData.netScoredBot || 0);
@@ -37,9 +38,9 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   ];
 
   useEffect(() => {
-    setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition}))
+    setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition}))
     // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
-  }, [l2Scored, l3Scored, l1Scored, l4Scored, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition])
+  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, spotlight, stage, coopertition])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission
@@ -51,7 +52,7 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
         <ul>
           
           <li>
-            <div className="matchrow1">
+            <div className="matchrow">
             <Counter
               name='L1'
               count={l1Scored}
@@ -77,7 +78,13 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
               onButtonDown={() => {if (l4Scored > 0) setl4Scored(l4Scored-1)}}
             />
             </div>
-            <div className="matchrow2">
+            <div className="matchrow">
+            <Counter
+              name='Coral Missed'
+              count={coralMissed}
+              onButtonUp={() => {if(coralMissed < 99) setCoralMissed(coralMissed+1)}}
+              onButtonDown={() => {if (coralMissed > 0) setCoralMissed(coralMissed-1)}}
+            />
             <Counter
               name='Net Scored(🗿)'
               count={netScoredHuman}
@@ -90,21 +97,22 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
               onButtonUp={() => {if (netMissHuman < 99) setNetMissHuman(netMissHuman+1)}}
               onButtonDown={() => {if (netMissHuman > 0) setNetMissHuman(netMissHuman-1)}}
             />
+            
+            </div>
+            <div className="matchrow">
             <Counter
               name='Net Scored(🤖)'
               count={netScoredBot}
               onButtonUp={() => {if (netScoredBot < 99) setNetScoredBot(netScoredBot+1)}}
               onButtonDown={() => {if (netScoredBot > 0) setNetScoredBot(netScoredBot-1)}}
             />
-            
-            </div>
-            <div className="matchrow3">
             <Counter
               name='Net Miss(🤖)'
               count={netMissBot}
               onButtonUp={() => {if (netMissBot < 99) setNetMissBot(netMissBot+1)}}
               onButtonDown={() => {if (netMissBot > 0) setNetMissBot(netMissBot-1)}}
             />
+
             <Counter
               name='Processor'
               count={processorScored}
@@ -112,7 +120,7 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
               onButtonDown={() => {if (processorScored > 0) setProcessorScored(processorScored-1)}}
             />
             </div>
-            <div className="matchrow3">
+            <div className="matchrow">
               
               <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
               

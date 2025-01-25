@@ -137,6 +137,7 @@ button {
   border-bottom-left-radius: 0px;
   font-weight: black;
   font-size: 1.1em;
+  padding: 0.6em 0.8em;
 }
 
 .mngrtghfwevbcfs {
@@ -151,6 +152,7 @@ button {
   border-bottom-right-radius: 0px;
   font-weight: black;
   font-size: 1.1em;
+  padding: 0.6em 0.8em;
 }
 
 .countertitle {
@@ -177,25 +179,11 @@ button {
   filter: brightness(1.2) contrast(120%) saturate(150%);
 }
 
-.matchrow1 {
+.matchrow {
   display:flex;
   padding:0px;
   gap: 20px;
   justify-content: center;
-}
-
-.matchrow2 {
-  display:flex;
-  padding:0px;
-  gap: 0px;
-  justify-content: space-around;
-}
-
-.matchrow3 {
-  display:flex;
-  padding:0px;
-  gap: 20px;
-  justify-content: space-around;
 }
 
 .redbutton {
@@ -534,7 +522,7 @@ redbutton:focus-visible {
   border-radius: 20px;
 }
 
-.qr-code-overlay {
+.popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -548,7 +536,7 @@ redbutton:focus-visible {
   z-index: 9999;
 }
 
-.qr-code-container {
+.popup-container {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -601,4 +589,72 @@ redbutton:focus-visible {
   align-items: center;
 }
 
-/* yes i am aware this is garbage css leave me alone */
+.submitButton {
+  font-size: 3em;
+  background-color: #008000;
+  border: 10px solid white;
+  animation: 
+    rainbow-pulse 10s infinite alternate,
+    rainbow-glow 10s infinite alternate;
+}
+
+@keyframes rainbow-pulse {
+  0% {
+    border-color: red;
+    transform: scale(1);
+  }
+  20% {
+    border-color: orange;
+  }
+  40% {
+    border-color: yellow;
+  }
+  60% {
+    border-color: green;
+  }
+  80% {
+    border-color: blue;
+  }
+  100% {
+    border-color: purple;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rainbow-glow {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
+                0 0 30px rgba(255, 0, 0, 0.5),
+                0 0 40px rgba(255, 0, 0, 0.3);
+  }
+  20% {
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.7),
+                0 0 30px rgba(255, 165, 0, 0.5),
+                0 0 40px rgba(255, 165, 0, 0.3);
+  }
+  40% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.7),
+                0 0 30px rgba(255, 255, 0, 0.5),
+                0 0 40px rgba(255, 255, 0, 0.3);
+  }
+  60% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7),
+                0 0 30px rgba(0, 255, 0, 0.5),
+                0 0 40px rgba(0, 255, 0, 0.3);
+  }
+  80% {
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.7),
+                0 0 30px rgba(0, 0, 255, 0.5),
+                0 0 40px rgba(0, 0, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(128, 0, 128, 0.7),
+                0 0 30px rgba(128, 0, 128, 0.5),
+                0 0 40px rgba(128, 0, 128, 0.3);
+  }
+}
+
+.clearButton {
+  font-size: 3em;
+  margin-top: 2vh;
+}

@@ -1,7 +1,7 @@
 {
-  "name": "react-vite-capacitor",
+  "name": "scouting-app-2025",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +20,8 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
+    "canvas-confetti": "^1.9.3",
+    "mui": "^0.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-qr-code": "^2.0.15"
