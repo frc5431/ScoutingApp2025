@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import Notes from "../components/Notes";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
+import { triggerConfetti } from "../components/triggerConfetti";
 
 export interface endProps {
   endData: { [key: string]: any };
@@ -65,6 +66,8 @@ const End: React.FC<endProps> = ({
     setEndData({})
     
     setPage("Mainpage")
+    triggerConfetti('burst')
+    triggerConfetti('cannon')
   }
   const hidePopup = (popup: string) => {
     switch (popup) {
