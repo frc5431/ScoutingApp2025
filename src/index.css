@@ -1,7 +1,7 @@
 
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -573,14 +573,13 @@ redbutton:focus-visible {
 
 .alliance-buttons {
   border-radius: 20px;
-  min-width: auto;
+  min-width: 1vw;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  margin-left:1vw;
-  margin-right: 1vw;
-  font-size: 1.4em;
+  margin-bottom: .5vh;
+  margin-left:.5vw;
+  margin-right: .5vw;
+  font-size: 1.1em;
 }
 
 .centerize {
