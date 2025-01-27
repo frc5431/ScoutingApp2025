@@ -41,16 +41,18 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
 
         <div className="input-row-mainpage">
           <div className="fake-input-container">
-            <h3 style={{fontSize: "1.3em"}}>Alliance:</h3>
+            <h3 style={{fontSize: "1.3em", paddingRight:'2vw'}}>Alliance:</h3>
           <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.RED)} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
             Red</button>
           <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.BLUE)} style={{backgroundColor:alliance === Alliance.BLUE ? '#007bff' : '#4e4e4e'}}>
             Blue</button>
           </div>
-          <div className="input-container">
+          <li>
+            <div className="input-container">
             <label>Comp Day</label>
-            <input name="Comp Day" value={compDay} onChange={e => setComPDay(e.target.value)}/>
+            <input name="Comp Day" value={matchID}  onChange={e => setMatchID(e.target.value)}/>
             </div>
+            </li>
         </div>
 
           <div className="input-row-mainpage">
