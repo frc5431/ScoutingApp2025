@@ -3,6 +3,7 @@ import QRCode from "react-qr-code";
 import Notes from "../components/Notes";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
 import { triggerConfetti } from "../components/triggerConfetti";
+import pickupduck from "../assets/pickupduck.jpg";
 
 export interface endProps {
   endData: { [key: string]: any };
@@ -34,7 +35,7 @@ const End: React.FC<endProps> = ({
   const [RP, setRP] = useState(endData.RP || '');
   const [deactivated, setDeactivated] = useState(endData.deactivated || "");
   const [playedDefense, setPlayedDefense] = useState(endData.playedDefense || "");
-  
+
   const deactivatedOptions: Option = [
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' }
@@ -64,7 +65,7 @@ const End: React.FC<endProps> = ({
     setMatchData({})
     setAutonData({})
     setEndData({})
-    
+
     setPage("Mainpage")
     triggerConfetti('burst')
     triggerConfetti('cannon')
@@ -78,9 +79,9 @@ const End: React.FC<endProps> = ({
       default:
         console.log(popup + " NOT VALUE");
     }
-      
+
   }
-  
+
 
   return (
     <>
@@ -89,23 +90,23 @@ const End: React.FC<endProps> = ({
           e.preventDefault();
         }}
       >
-        
+
         <Notes notes={notes} setNotes={setNotes}></Notes>
         <ul>
           <div className="input-row">
             <li>
               <div className="input-container">
                 <div className="inputcolorredpointscool">
-                    <label>Red Points</label>
-                    <input name="Red Points" value={redPoints} onChange={(e) => setRedPoints(e.target.value)} type={"number"} />
+                  <label>Red Points</label>
+                  <input name="Red Points" value={redPoints} onChange={(e) => setRedPoints(e.target.value)} type={"number"} />
                 </div>
               </div>
             </li>
             <li>
               <div className="input-container">
                 <div className="inputcolorbluepointscool">
-                    <label>Blue Points</label>
-                    <input name="Blue Points" value={bluePoints} onChange={(e) => setBluePoints(e.target.value)} type={"number"} />
+                  <label>Blue Points</label>
+                  <input name="Blue Points" value={bluePoints} onChange={(e) => setBluePoints(e.target.value)} type={"number"} />
                 </div>
               </div>
             </li>
@@ -113,14 +114,14 @@ const End: React.FC<endProps> = ({
           <div className="input-row">
             <li>
               <div className="input-container">
-                  <label>Penalties</label>
-                  <input name="Penalties" value={penalties} onChange={(e) => setPenalties(e.target.value)} type={"number"} />
+                <label>Penalties</label>
+                <input name="Penalties" value={penalties} onChange={(e) => setPenalties(e.target.value)} type={"number"} />
               </div>
             </li>
             <li>
               <div className="input-container">
-                    <label>RP</label>
-                    <input name="RP" value={RP} onChange={(e) => setRP(e.target.value)} type={"number"} />
+                <label>RP</label>
+                <input name="RP" value={RP} onChange={(e) => setRP(e.target.value)} type={"number"} />
               </div>
             </li>
           </div>
@@ -134,41 +135,41 @@ const End: React.FC<endProps> = ({
           </div>
         </ul>
         <div>
-           <button onClick={handleSubmit} className="submitButton">SUBMIT!</button>
+          <button onClick={handleSubmit} className="submitButton">SUBMIT!</button>
         </div>
         <div>
           <button onClick={() => (setClearedConfirmed(true))} className="clearButton">CLEAR</button>
         </div>
       </form>
 
-     {submitted && (
-      notes !== "" ? (
-        <div className="popup-overlay">
-          <div className="popup-container">
-            <QRCode value={JSON.stringify(allData)} />
-            <button className="exit-button" onClick={() => {hidePopup("QRCODE")}}>EXIT</button>
+      {submitted && (
+        notes !== "" ? (
+          <div className="popup-overlay">
+            <div className="popup-container">
+              <QRCode value={JSON.stringify(allData)} />
+              <button className="exit-button" onClick={() => { hidePopup("QRCODE") }}>EXIT</button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="popup-overlay">
-          <div className="popup-container" style={{color: "black"}}>
-            <h3>DO NOTES TO PICK UP A DUCK AND SUBMIT</h3>
-            <img src="src\assets\pickupduck.jpg" alt="Pick up a duck" />
-            <button className="exit-button" onClick={() => {hidePopup("QRCODE")}}>EXIT</button>
+        ) : (
+          <div className="popup-overlay">
+            <div className="popup-container" style={{ color: "black" }}>
+              <h3>DO NOTES TO PICK UP A DUCK AND SUBMIT</h3>
+              <img src={pickupduck} alt="Pick up a duck" />
+              <button className="exit-button" onClick={() => { hidePopup("QRCODE") }}>EXIT</button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       {
         clearedConfirmed && (
-        <div className="popup-overlay">
-          <div style={{flexDirection:"column"}}>
-            <h3>Are you sure you want to <strong style={{color:'red'}}>clear</strong>?</h3>
-          <div className="popup-container" style={{flexDirection: "row", justifyContent:'space-between'}}>
-            <button style={{margin:'1vw', backgroundColor:'green', fontSize:'2em'}} onClick={resetValues}>Yes</button>
-            <button style={{margin:'1vw', backgroundColor:'red', fontSize:'2em'}} onClick={() => {hidePopup("CLEAR")}}>No</button>
-        </div>
-        </div>
-        </div>
+          <div className="popup-overlay">
+            <div style={{ flexDirection: "column" }}>
+              <h3>Are you sure you want to <strong style={{ color: 'red' }}>clear</strong>?</h3>
+              <div className="popup-container" style={{ flexDirection: "row", justifyContent: 'space-between' }}>
+                <button style={{ margin: '1vw', backgroundColor: 'green', fontSize: '2em' }} onClick={resetValues}>Yes</button>
+                <button style={{ margin: '1vw', backgroundColor: 'red', fontSize: '2em' }} onClick={() => { hidePopup("CLEAR") }}>No</button>
+              </div>
+            </div>
+          </div>
         )
       }
     </>
