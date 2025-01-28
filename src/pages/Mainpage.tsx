@@ -50,7 +50,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           <li>
             <div className="input-container">
             <label>Comp Day</label>
-            <input name="Comp Day" value={matchID}  onChange={e => setMatchID(e.target.value)}/>
+            <input name="Comp Day" value={compDay}  onChange={e => setComPDay(e.target.value)}/>
             </div>
             </li>
         </div>
