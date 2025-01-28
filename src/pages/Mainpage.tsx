@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImageClick from "../components/ImageClick";
+import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
 
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
@@ -8,14 +9,20 @@ export interface mainpageProps {
 
 const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: mainpageProps) => {
   const [matchID, setMatchID] = useState(mainpageData.matchID || '');
-  const [compDay, setComPDay] = useState<string>(mainpageData.compDay || '');
+  const [compDay, setCompDay] = useState<string>(mainpageData.compDay || '');
   const [scouterName, setScouterName] = useState(mainpageData.scouterName || '');
   const [alliance, setAlliance] = useState(mainpageData.alliance || Alliance.NOT_SET);
   const [teamID, setTeamID] = useState(mainpageData.teamID || '');
   const [preload, setPreload] = useState(mainpageData.preload || false);
   const [noshow, setNoshow] = useState(mainpageData.noshow || false);
-  const [robotPos, setRobotPos] = useState<{ x: number; y: number }>(mainpageData.robotPos || [Number, Number]);
+  const [robotPos, setRobotPos] = useState(mainpageData.robotPos || '');
   
+  const robotPosOptions: Option = [
+    { label: 'Close', value: 'Close' },
+    { label: 'Middle', value: 'Middle' },
+    { label: 'Far', value: 'Far' }
+  ];
+
   useEffect(() => {
     setMainpageData(oldData => ({...oldData, alliance, matchID, compDay, scouterName, teamID, robotPos, preload, noshow}))
   }, [alliance, matchID, compDay, scouterName, teamID, robotPos, preload, noshow])
@@ -50,7 +57,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           <li>
             <div className="input-container">
             <label>Comp Day</label>
-            <input name="Comp Day" value={compDay}  onChange={e => setComPDay(e.target.value)}/>
+            <input name="Comp Day" value={compDay}  onChange={e => setCompDay(e.target.value)}/>
             </div>
             </li>
         </div>
@@ -99,8 +106,9 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           </div>
 
           <li>
-            <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click to show)</label>
-            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick>
+            {/* <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click to show)</label>
+            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick> */}
+            <RadioButtons vari={robotPos} setVari={setRobotPos} options={robotPosOptions} groupName="Robot Starting Position"></RadioButtons>
           </li>
      </ul>
       </form>
