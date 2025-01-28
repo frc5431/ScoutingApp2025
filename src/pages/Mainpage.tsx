@@ -106,8 +106,8 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           </div>
 
           <li>
-            {/* <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click to show)</label>
-            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick> */}
+            <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click The Button to Select)</label>
+            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick>
             <RadioButtons vari={robotPos} setVari={setRobotPos} options={robotPosOptions} groupName="Robot Starting Position"></RadioButtons>
           </li>
      </ul>
