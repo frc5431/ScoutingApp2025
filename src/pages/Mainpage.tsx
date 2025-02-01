@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ImageClick from "../components/ImageClick";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
+import { triggerConfetti } from "../components/triggerConfetti";
 
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
@@ -22,6 +23,10 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
     { label: 'Middle', value: 'Middle' },
     { label: 'Far', value: 'Far' }
   ];
+
+  const AllianceConfetti = () => {
+      triggerConfetti('cannon', '5431')
+    }
 
   useEffect(() => {
     setMainpageData(oldData => ({...oldData, alliance, matchID, compDay, scouterName, teamID, robotPos, preload, noshow}))
@@ -49,7 +54,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
         <div className="input-row-mainpage">
           <div className="fake-input-container">
             <h3 style={{fontSize: "1.3em", paddingRight:'2vw'}}>Alliance:</h3>
-          <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.RED)} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
+          <button className="alliance-buttons" onClick={()=>[setAlliance(Alliance.RED)]} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
             Red</button>
           <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.BLUE)} style={{backgroundColor:alliance === Alliance.BLUE ? '#007bff' : '#4e4e4e'}}>
             Blue</button>
