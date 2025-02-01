@@ -36,6 +36,7 @@ const End: React.FC<endProps> = ({
   const [deactivated, setDeactivated] = useState(endData.deactivated || "");
   const [playedDefense, setPlayedDefense] = useState(endData.playedDefense || "");
 
+  const [compDayPerm, setCompDayPerm] = useState(mainpageData.compDay || "");
   const deactivatedOptions: Option = [
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' }
@@ -61,10 +62,12 @@ const End: React.FC<endProps> = ({
   };
 
   const resetValues = () => {
-    setMainpageData({})
-    setMatchData({})
-    setAutonData({})
-    setEndData({})
+    setCompDayPerm(mainpageData.compDay);
+
+    setMainpageData({compDay : compDayPerm});
+    setMatchData({});
+    setAutonData({});
+    setEndData({});
 
     setPage("Mainpage")
     triggerConfetti('burst', '5431')
