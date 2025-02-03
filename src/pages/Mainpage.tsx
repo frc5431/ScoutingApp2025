@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ImageClick from "../components/ImageClick";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
+import Field from "../components/Field/Field";
 
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
@@ -55,36 +56,22 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
             Blue</button>
           </div>
           <li>
-            <div className="input-container">
-            <label>Comp Day</label>
-            <input name="Comp Day" value={compDay}  onChange={e => setCompDay(e.target.value)}/>
-            </div>
-            </li>
+            <Field type="text" value={compDay} setValue={setCompDay} groupName="Comp Day" placeHolder="Ex: Plano"></Field>
+          </li>
         </div>
 
           <div className="input-row-mainpage">
 
           <li>
-            <div className="input-container">
-            <label>Scouter Name</label>
-            <input name="Scouter Name" value={scouterName} onChange={e => setScouterName(e.target.value)}/>
-            </div>
+            <Field type="text" value={scouterName} setValue={setScouterName} groupName="Scouter Name" placeHolder="Ex: Rudy"></Field>
           </li>
           <li>
-            <div className="input-container">
-            <label>Match Number</label>
-            <input name="Match ID" value={matchID} type="number" onChange={e => setMatchID(e.target.value)}/>
-            </div>
+            <Field type="number" value={matchID} setValue={setMatchID} groupName="Match ID" min={0} max={99} placeHolder="Ex: 5"></Field>
           </li>
           </div>
-          
-
           <div className="input-row-mainpage">
           <li>
-          <div className="input-container">
-            <label>Team Number</label>
-            <input id="teamID" name="TeamID" value={teamID} type="number" onChange={e => setTeamID(e.target.value)}/>
-            </div>
+            <Field type="number" value={teamID} setValue={setTeamID} groupName="Team ID" min={0} max={20000} placeHolder="Ex: 5431"></Field>
           </li>
           
 

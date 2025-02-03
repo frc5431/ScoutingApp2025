@@ -4,6 +4,7 @@ import Notes from "../components/Notes";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
 import { triggerConfetti } from "../components/triggerConfetti";
 import pickupduck from "../assets/pickupduck.jpg";
+import Field from "../components/Field/Field";
 
 export interface endProps {
   endData: { [key: string]: any };
@@ -33,6 +34,7 @@ const End: React.FC<endProps> = ({
   const [bluePoints, setBluePoints] = useState(endData.bluePoints || '');
   const [penalties, setPenalties] = useState(endData.penalties || '');
   const [RP, setRP] = useState(endData.RP || '');
+  const RP_MAX = 6; // Change this for different game rules
   const [deactivated, setDeactivated] = useState(endData.deactivated || "");
   const [playedDefense, setPlayedDefense] = useState(endData.playedDefense || "");
 
@@ -97,35 +99,25 @@ const End: React.FC<endProps> = ({
         <Notes notes={notes} setNotes={setNotes}></Notes>
         <ul>
           <div className="input-row">
-            <li>
-              <div className="input-container">
-                <div className="inputcolorredpointscool">
-                  <label>Red Points</label>
-                  <input name="Red Points" value={redPoints} onChange={(e) => setRedPoints(e.target.value)} type={"number"} />
-                </div>
+            <li>      
+              <div className="inputcolorredpointscool">
+                <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 68"></Field>
               </div>
             </li>
             <li>
               <div className="input-container">
                 <div className="inputcolorbluepointscool">
-                  <label>Blue Points</label>
-                  <input name="Blue Points" value={bluePoints} onChange={(e) => setBluePoints(e.target.value)} type={"number"} />
+                  <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 70"></Field>
                 </div>
               </div>
             </li>
           </div>
           <div className="input-row">
             <li>
-              <div className="input-container">
-                <label>Penalties</label>
-                <input name="Penalties" value={penalties} onChange={(e) => setPenalties(e.target.value)} type={"number"} />
-              </div>
+              <Field type="number" value={penalties} setValue={setPenalties} groupName="Penalties" min={0} max={999} placeHolder="Ex: 15"></Field>
             </li>
             <li>
-              <div className="input-container">
-                <label>RP</label>
-                <input name="RP" value={RP} onChange={(e) => setRP(e.target.value)} type={"number"} />
-              </div>
+              <Field type="number" value={RP} setValue={setRP} groupName="Ranking Points" min={0} max={RP_MAX} placeHolder="Ex: 2"></Field>
             </li>
           </div>
           <div className="omgsexyrow">

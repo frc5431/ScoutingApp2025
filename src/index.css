@@ -593,10 +593,10 @@ redbutton:focus-visible {
 .submitButton {
   font-size: 3em;
   background-color: #008000;
-  border: 10px solid white;
-  animation: 
+  border: 2px solid white;
+  /* animation: 
     rainbow-pulse 10s infinite alternate,
-    rainbow-glow 10s infinite alternate;
+    rainbow-glow 10s infinite alternate; */
 }
 
 @keyframes rainbow-pulse {
