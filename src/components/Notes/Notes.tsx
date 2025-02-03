@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { defineConfig } from "vite";
+import './Notes.css';
 
 export interface notesProps {
   notes: string;

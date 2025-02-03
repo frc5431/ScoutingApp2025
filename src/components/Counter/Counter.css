@@ -1,0 +1,69 @@
+.counterinrow {
+  display:flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+}
+
+.countercontainer {
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.countertitle {
+  margin-bottom: -20px;
+  margin-top: 0px;
+  font-size: 1.5em;
+}
+
+.counterdisplay {
+  display:flex;
+  font-size: 2em;
+  width: 1.8em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  padding-left: 20px;
+  margin-left: -10px;
+  padding-right: 20px;
+  margin-right: -10px;
+  box-sizing: border-box; 
+  border-radius: 10px;
+  background-color: var(--background-color);
+  filter: brightness(1.2) contrast(120%) saturate(150%);
+}
+
+.leftbutton {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-weight: black;
+  font-size: 1.1em;
+  padding: 0.6em 0.8em;
+}
+
+.rightbutton {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-weight: black;
+  font-size: 1.1em;
+  padding: 0.6em 0.8em;
+}
+
+/* 
+.counterbuttonfix {
+  display:flex;
+  text-align: center;
+  align-items:center;
+  justify-content: center;
+} */

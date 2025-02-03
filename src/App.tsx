@@ -4,9 +4,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Mainpage from './pages/Mainpage/Mainpage';
-import Auton from './pages/Auton';
-import Match from './pages/Match';
-import End from './pages/End';
+import Auton from './pages/Auton/Auton';
+import Match from './pages/Match/Match';
+import End from './pages/End/End';
 function App() {
   
   const [currentPage, setPage] = useState("Mainpage");

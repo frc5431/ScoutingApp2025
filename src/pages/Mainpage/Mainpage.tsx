@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import ImageClick from "../../components/ImageClick";
 import RadioButtons, { Option } from "../../components/radioButtons/radioButtons";
 import Field from "../../components/Field/Field";
-import './Mainpage.css'
+import './Mainpage.css';
+
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
   setMainpageData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
@@ -72,12 +73,12 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
         
           <li className="fake-input-container">
           <div className="checkboxContainer">
-            <label className="custom-checkbox">
+            <label className="mainpage-checkbox">
             <input type="checkbox" checked={preload} onChange={e => setPreload(e.target.checked)}/>
             <span className="checkmark"></span>
             <span className="checkboxtext">Pre load </span>
             </label>
-            <label className="custom-checkbox">
+            <label className="mainpage-checkbox">
             <input type="checkbox" checked={noshow} onChange={e => setNoshow(e.target.checked)}/>
             <span className="checkmark"></span>
             <span className="checkboxtext">No Show </span>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ImageClick from "../components/ImageClick";
-import Counter from '../components/Counter';
-import RadioButtons, {Option} from "../components/radioButtons/radioButtons";
-import Notes from "../components/Notes";
+import ImageClick from "../../components/ImageClick";
+import Counter from '../../components/Counter/Counter';
+import RadioButtons, {Option} from "../../components/radioButtons/radioButtons";
+import Notes from "../../components/Notes/Notes";
+import './Auton.css';
 
 export interface autonProps {
   autonData: {[key: string]: any};
@@ -48,7 +49,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
         <form onSubmit={handleSubmit}>
           <ul>
             <li>
-              <div className="firsttwoautoncounters">
+              <div className="autonCounters">
                 
                 <Counter
                   name='L1'
@@ -75,7 +76,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                   onButtonDown={() => {if (l4auton > 0) setl4auton(l4auton-1)}}
                 />
               </div>
-              <div className="firsttwoautoncounters">
+              <div className="autonCounters">
                 <Counter
                   name='Coral Missed'
                   count={autonCoralMissed}
