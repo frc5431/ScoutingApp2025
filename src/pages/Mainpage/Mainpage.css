@@ -62,3 +62,144 @@
   transition: opacity 0.2s;
 }
 
+
+.defaultAllianceButtonColor {
+  background-color: #4e4e4e;
+}
+
+.redAllianceButtonColor {
+  background-color: #ff283a;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: pulseGlow 2s infinite;
+  box-shadow: 0 0 10px rgba(255, 40, 58, 0.5);
+}
+
+.redAllianceButtonColor:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 40, 58, 0.8);
+}
+
+.redAllianceButtonColor::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #ff283a, #ff6b7a, #ff283a);
+  z-index: -1;
+  animation: borderGlow 3s infinite;
+  filter: blur(8px);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 40, 58, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 40, 58, 0.8),
+                0 0 40px rgba(255, 40, 58, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 40, 58, 0.5);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+}
+
+.redAllianceButtonColor {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to bottom, #ff4d5e, #ff283a);
+}
+
+.redAllianceButtonColor:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 15px rgba(255, 40, 58, 0.6);
+}
+
+.blueAllianceButtonColor {
+  background-color: #007bff;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: pulseGlowBlue 2s infinite;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to bottom, #1a88ff, #007bff);
+}
+
+.blueAllianceButtonColor:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+}
+
+.blueAllianceButtonColor::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #007bff, #4da3ff, #007bff);
+  z-index: -1;
+  animation: borderGlowBlue 3s infinite;
+  filter: blur(8px);
+}
+
+@keyframes pulseGlowBlue {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+}
+
+@keyframes borderGlowBlue {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+}
+
+.blueAllianceButtonColor:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}

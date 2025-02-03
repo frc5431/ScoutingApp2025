@@ -41,10 +41,14 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
         <div className="input-row">
           <div className="fake-input-container">
             <h3 style={{fontSize: "1.3em", paddingRight:'2vw'}}>Alliance:</h3>
-          <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.RED)} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
+            <div className="alliance-buttons">
+          <button className={alliance === Alliance.RED ? 'redAllianceButtonColor' : 'defaultAllianceButtonColor'} onClick={()=>setAlliance(Alliance.RED)}>
             Red</button>
-          <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.BLUE)} style={{backgroundColor:alliance === Alliance.BLUE ? '#007bff' : '#4e4e4e'}}>
+            </div>
+            <div className="alliance-buttons">
+          <button className={alliance === Alliance.BLUE ? 'blueAllianceButtonColor' : 'defaultAllianceButtonColor'} onClick={()=>setAlliance(Alliance.BLUE)}>
             Blue</button>
+            </div>
           </div>
           <li>
             <Field type="text" value={compDay} setValue={setCompDay} groupName="Comp Day" placeHolder="Ex: Plano"></Field>
