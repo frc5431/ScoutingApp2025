@@ -3,10 +3,10 @@
 // import viteLogo from '/vite.svg'
 import { useEffect, useState } from 'react'
 import './App.css'
-import Mainpage from './pages/Mainpage';
-import Auton from './pages/Auton';
-import Match from './pages/Match';
-import End from './pages/End';
+import Mainpage from './pages/Mainpage/Mainpage';
+import Auton from './pages/Auton/Auton';
+import Match from './pages/Match/Match';
+import End from './pages/End/End';
 function App() {
   
   const [currentPage, setPage] = useState("Mainpage");
@@ -81,6 +81,7 @@ function App() {
         </div>
       )}
       
+      
 
       {currentPage == "Auton" && (
 
@@ -110,20 +111,3 @@ function App() {
 }
 
 export default App
-
-// Failed thing that probably wont get uesd
-// export function getData(type: string) {
-//   switch (type) {
-//     case "Mainpage":
-//         return mainpageData;
-//       case "Auton":
-//         return autonData;
-//       case "Match":
-//         return matchData
-//       case "End":
-//         return endData
-//       default:
-//         console.log("SKILL ISSUE");
-//         return null;
-//   }
-// }
