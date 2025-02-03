@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
-import Notes from "../components/Notes";
+import Notes from "../components/Notes/Notes";
 import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
 import { triggerConfetti } from "../components/triggerConfetti";
 import pickupduck from "../assets/pickupduck.jpg";
@@ -72,8 +72,8 @@ const End: React.FC<endProps> = ({
     setEndData({});
 
     setPage("Mainpage");
-    triggerConfetti('burst');
-    triggerConfetti('cannon');
+    triggerConfetti('burst', '5431');
+    triggerConfetti('cannon', '5431');
   }
   const hidePopup = (popup: string) => {
     switch (popup) {
@@ -96,7 +96,7 @@ const End: React.FC<endProps> = ({
         }}
       >
 
-        <Notes notes={notes} setNotes={setNotes}></Notes>
+        <Notes notes={notes} setNotes={setNotes} placeholder="Do good notes or the SNS team will haunt you"></Notes>
         <ul>
           <div className="input-row">
             <li>      

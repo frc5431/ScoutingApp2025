@@ -1,6 +1,19 @@
 import confetti from 'canvas-confetti';
 
-export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks' = 'basic') => {
+export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks' = 'basic', color: string) => {
+  let colors: string[] = ['']; 
+
+  switch (color) {
+    case '5431':
+      colors = ['#9370DB', '#3673CD', '#00D4E3', '#7D61CF'];
+      break;
+    
+    case 'rainbow':
+      colors = ['#FF0000', '#FFA500', '#FFFF00', '#008000', '#0000FF', '#4B0082', '#EE82EE'];
+      break;
+  }
+
+
   switch (type) {
     case 'basic':
       confetti({
@@ -13,7 +26,6 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
       case 'burst':
         const duration = 3 * 1000;
         const animationEnd = Date.now() + duration;
-        const burstColors = ['#9370DB', '#3673CD', '#00D4E3', '#7D61CF'];
         const defaults = { 
           startVelocity: 30, 
           spread: 360, 
@@ -31,12 +43,12 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
           confetti(Object.assign({}, defaults, { 
             particleCount, 
             origin: { x: 0.2, y: Math.random() - 0.2 },
-            colors: burstColors
+            colors: colors
           }));
           confetti(Object.assign({}, defaults, { 
             particleCount, 
             origin: { x: 0.8, y: Math.random() - 0.2 },
-            colors: burstColors
+            colors: colors
           }));
         }, 250);
         break;
@@ -47,7 +59,6 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
     
     case 'cannon':
       const end = Date.now() + (3 * 1000);
-      const colors = ['#9370DB', '#3673CD'];
 
       (function frame() {
         confetti({
@@ -71,16 +82,16 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
       })();
       break;
     
-    case 'fireworks':
-      ['#00D4E3', '#3673CD', '#7D61CF'].forEach(color => {
-        confetti({
-          origin: { y: 0.7 },
-          colors: [color],
-          spread: 70,
-          scalar: 1
+      case 'fireworks':
+        colors.forEach(color => {
+          confetti({
+            origin: { y: 0.7 },
+            colors: [color],
+            spread: 70,
+            scalar: 1
+          });
         });
-      });
-      break;
+        break;  
   }
 };
 

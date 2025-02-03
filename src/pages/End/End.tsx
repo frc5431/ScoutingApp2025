@@ -73,8 +73,8 @@ const End: React.FC<endProps> = ({
     setEndData({});
 
     setPage("Mainpage");
-    triggerConfetti('burst');
-    triggerConfetti('cannon');
+    triggerConfetti('burst', '5431');
+    triggerConfetti('cannon', '5431');
   }
   const hidePopup = (popup: string) => {
     switch (popup) {
