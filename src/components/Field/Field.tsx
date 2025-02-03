@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 /* 
   uses discriminated union design. Claude helped generate this code, will learn this design seems very useful. 
