@@ -60,7 +60,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                   name='L2'
                   count={l2auton}
                   onButtonUp={() => {if (l2auton < 99) setl2auton(l2auton+1)}}
-                  onButtonDown={() => {if (l2auton > 0) setl1auton(l2auton-1)}}
+                  onButtonDown={() => {if (l2auton > 0) setl2auton(l2auton-1)}}
                 />
                 <Counter
                   name='L3'
