@@ -3,6 +3,7 @@ import ImageClick from "../../components/ImageClick";
 import RadioButtons, { Option } from "../../components/radioButtons/radioButtons";
 import Field from "../../components/Field/Field";
 import './Mainpage.css';
+import { triggerConfetti } from "../../components/triggerConfetti";
 
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
@@ -42,11 +43,11 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           <div className="fake-input-container">
             <h3 style={{fontSize: "1.3em", paddingRight:'2vw'}}>Alliance:</h3>
             <div className="alliance-buttons">
-          <button className={alliance === Alliance.RED ? 'redAllianceButtonColor' : 'defaultAllianceButtonColor'} onClick={()=>setAlliance(Alliance.RED)}>
+          <button className={alliance === Alliance.RED ? 'redAllianceButtonColor' : 'defaultAllianceButtonColor'} onClick={()=>{setAlliance(Alliance.RED);triggerConfetti('basic', 'red')}}>
             Red</button>
             </div>
             <div className="alliance-buttons">
-          <button className={alliance === Alliance.BLUE ? 'blueAllianceButtonColor' : 'defaultAllianceButtonColor'} onClick={()=>setAlliance(Alliance.BLUE)}>
+          <button className={alliance === Alliance.BLUE ? 'blueAllianceButtonColor' : 'defaultAllianceButtonColor'} onClick={()=>{setAlliance(Alliance.BLUE);triggerConfetti('basic','blue')}}>
             Blue</button>
             </div>
           </div>

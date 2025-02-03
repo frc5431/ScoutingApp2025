@@ -11,15 +11,24 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
     case 'rainbow':
       colors = ['#FF0000', '#FFA500', '#FFFF00', '#008000', '#0000FF', '#4B0082', '#EE82EE'];
       break;
+
+    case 'red':
+      colors = ['#ff283a']
+      break;
+    
+    case 'blue':
+      colors = ['#007bff']
+      break;
   }
 
 
   switch (type) {
     case 'basic':
       confetti({
-        particleCount: 100,
+        particleCount: 20,
         spread: 70,
-        origin: { y: 0.6 }
+        origin: { y: 1 },
+        colors: colors
       });
       break;
     
