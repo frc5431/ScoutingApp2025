@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ImageClick from "../components/ImageClick";
-import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
-import Field from "../components/Field/Field";
-
+import ImageClick from "../../components/ImageClick";
+import RadioButtons, { Option } from "../../components/radioButtons/radioButtons";
+import Field from "../../components/Field/Field";
+import './Mainpage.css'
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
   setMainpageData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
@@ -36,18 +36,8 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* <div className="select-dropdown">
-        <label>Alliance: </label>
-        <select name="alliance" id="alliance" value={alliance} onChange={(event) => setAlliance(event.target.value as Alliance)}>
-          <option value={Alliance.NOT_SET} disabled>Select an alliance</option>
-          <option value={Alliance.RED}>Red Alliance</option>
-          <option value={Alliance.BLUE}>Blue Alliance</option>
-        </select>
-        </div> */}
-
         <ul>
-
-        <div className="input-row-mainpage">
+        <div className="input-row">
           <div className="fake-input-container">
             <h3 style={{fontSize: "1.3em", paddingRight:'2vw'}}>Alliance:</h3>
           <button className="alliance-buttons" onClick={()=>setAlliance(Alliance.RED)} style={{backgroundColor:alliance === Alliance.RED ? '#ff283a' : '#4e4e4e'}}>
@@ -60,7 +50,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           </li>
         </div>
 
-          <div className="input-row-mainpage">
+          <div className="input-row">
 
           <li>
             <Field type="text" value={scouterName} setValue={setScouterName} groupName="Scouter Name" placeHolder="Ex: Rudy"></Field>
@@ -69,7 +59,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
             <Field type="number" value={matchID} setValue={setMatchID} groupName="Match ID" min={0} max={99} placeHolder="Ex: 5"></Field>
           </li>
           </div>
-          <div className="input-row-mainpage">
+          <div className="input-row">
           <li>
             <Field type="number" value={teamID} setValue={setTeamID} groupName="Team ID" min={0} max={20000} placeHolder="Ex: 5431"></Field>
           </li>

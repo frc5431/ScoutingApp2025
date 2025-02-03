@@ -17,14 +17,55 @@
 :root {
   --background-color: #242424; /* Default color */
 }
+/* 
+
+*/
+
+.grid {
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr 1fr;
+  grid-template-rows: 3% 8% auto;
+  height: 100vh;
+  width: 90vw;
+  gap: 10px 10px;
+}
+
+#title {
+  grid-row: 1;
+  grid-column: span 4;
+}
+
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-row-modify{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.fake-input-container{
+  min-width: 40vw;
+  display: flex;
+  justify-content: center;
+}
+
 
 body {
   background-color: var(--background-color);
 }
 
 ul {
-  padding: 0;
-  margin: 0; 
+  list-style: none;
+}
+
+li {
+  padding: 10px;
+  font-size: larger;
 }
 
 h2 {
@@ -328,31 +369,6 @@ redbutton:focus-visible {
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
-.input-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-.input-row-modify{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.input-row-mainpage{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.fake-input-container{
-  min-width: 40vw;
-  display: flex;
-  justify-content: center;
-}
 
 .input-container,
 .input-container * {
@@ -442,19 +458,10 @@ redbutton:focus-visible {
   opacity: 1; /* Show checkmark when checked */
 }
 
-.checkboxContainer {
-  display: flex; 
-  justify-content: center; 
-  align-items: center;
-  gap: 20px; 
-}
-
 .BOB {
   position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  
   align-items: flex-end;
   justify-content: center;
 }
@@ -571,17 +578,6 @@ redbutton:focus-visible {
   border: none;     
   color: white;   
   cursor: pointer;
-}
-
-.alliance-buttons {
-  border-radius: 20px;
-  min-width: 1vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  margin-bottom: .5vh;
-  margin-left:1vw;
-  margin-right: 1vw;
-  font-size: 1.1em;
 }
 
 .centerize {
