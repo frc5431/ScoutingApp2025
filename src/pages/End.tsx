@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
-import Notes from "../../components/Notes/Notes";
-import RadioButtons, { Option } from "../../components/radioButtons/radioButtons";
-import { triggerConfetti } from "../../components/triggerConfetti";
-import pickupduck from "../../assets/pickupduck.jpg";
-import Field from "../../components/Field/Field";
-import './End.css';
+import Notes from "../components/Notes";
+import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
+import { triggerConfetti } from "../components/triggerConfetti";
+import pickupduck from "../assets/pickupduck.jpg";
+import Field from "../components/Field/Field";
 
 export interface endProps {
   endData: { [key: string]: any };
@@ -97,7 +96,7 @@ const End: React.FC<endProps> = ({
         }}
       >
 
-        <Notes notes={notes} setNotes={setNotes} placeholder="Do good notes or the SNS team will haunt you"></Notes>
+        <Notes notes={notes} setNotes={setNotes}></Notes>
         <ul>
           <div className="input-row">
             <li>      

@@ -107,9 +107,9 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
             <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
             </li>
             <div>
-              <label style={{fontSize:'2em'}} >Robot Auton Path (Describe it; ie- went to L1; Say if it was good and successful): </label>
               <div style={{margin: "10px"}}>
-                <Notes notes={autonPathNotes} setNotes={setAutonPathNotes}></Notes>
+                <Notes notes={autonPathNotes} setNotes={setAutonPathNotes}
+                 placeholder="Robot Auton Path (Describe it; ie- went to L1; Say if it was good and successful"></Notes>
               </div>
             </div>
           </ul>
