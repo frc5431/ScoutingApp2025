@@ -69,11 +69,12 @@
 
 .input-container {
   width: 0;
-  flex: 1, 1, 0; /* Allow containers to grow and shrink */
-  min-width: 40vw; /* Minimum width before wrapping */
+  flex: 1, 1, 0; 
+  min-width: 40vw; 
   position: relative;
   background-color: #242424;
   border-radius: 20px;
+  border: 5px red;
 }
 
 .input-container input {
