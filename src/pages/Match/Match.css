@@ -1,0 +1,6 @@
+.matchrow {
+  display:flex;
+  padding:0px;
+  gap: 20px;
+  justify-content: center;
+}

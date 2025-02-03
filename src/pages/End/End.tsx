@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
-import Notes from "../components/Notes";
-import RadioButtons, { Option } from "../components/radioButtons/radioButtons";
-import { triggerConfetti } from "../components/triggerConfetti";
-import pickupduck from "../assets/pickupduck.jpg";
-import Field from "../components/Field/Field";
+import Notes from "../../components/Notes/Notes";
+import RadioButtons, { Option } from "../../components/radioButtons/radioButtons";
+import { triggerConfetti } from "../../components/triggerConfetti";
+import pickupduck from "../../assets/pickupduck.jpg";
+import Field from "../../components/Field/Field";
+import './End.css';
 
 export interface endProps {
   endData: { [key: string]: any };
