@@ -27,7 +27,8 @@
 }
 
 .mainpage-checkbox input:checked + .checkmark {
-  background-color: #007bff; /* Background color when checked */
+  background-color: #10b14b; /* Background color when checked */
+  animation: checkmarkChecked 2.5s infinite;
 }
 
 .mainpage-checkbox input:checked + .checkmark:after {
@@ -62,6 +63,17 @@
   transition: opacity 0.2s;
 }
 
+@keyframes checkmarkChecked {
+  0% {
+  box-shadow: 0 0 20px #10b14b;
+    }
+  50% {
+    box-shadow: 0 0 10px #10b14b;
+   }
+  100% {
+    box-shadow: 0 0 20px #10b14b;
+    }
+}
 
 .defaultAllianceButtonColor {
   background-color: #4e4e4e;
