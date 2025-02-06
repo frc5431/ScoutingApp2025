@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
+import bubblewrap from "../../src/assets/bublewarpPOP.wav";
+import YIPEEE from "../../src/assets/yippeeeeeeeeeeeeee.mp3";
 
 export interface imageClickProps {
   type: string;
@@ -7,9 +9,15 @@ export interface imageClickProps {
   autonPath?: { x: number; y: number }[];
   setAutonPath?: React.Dispatch<React.SetStateAction<{ x: number; y: number }[]>>;
   resetTrigger?: number;
+  yipeeCount?: number;
+  setYipeeCount?: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPath, setRobotPos, type, resetTrigger}: imageClickProps) => {
+const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPath, setRobotPos, type, resetTrigger, yipeeCount, setYipeeCount}: imageClickProps) => {
+  const bubblewrapPOP = new Audio(bubblewrap);
+  const YIPEEEE = new Audio(YIPEEE);
+  
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [dotPositions, setDotPositions] = useState<{ x: number; y: number }[]>(Array.isArray(autonPath) ? autonPath : robotPos ? [robotPos] : []);
   
@@ -52,6 +60,17 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
   };
 
   const handleClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    const randomSFX = Math.random();
+    if (randomSFX <= .01) {
+      YIPEEEE.play();
+      if (yipeeCount !== undefined && setYipeeCount !== undefined) {
+        setYipeeCount(yipeeCount + 1);
+      } 
+    }
+    else {
+      bubblewrapPOP.play();
+    }
+
     if (type === "one" && dotPositions.length > 0) {
       setDotPositions(prevPositions => prevPositions.slice(0, -1));
     }
