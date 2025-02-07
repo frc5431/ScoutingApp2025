@@ -9,14 +9,13 @@ export interface imageClickProps {
   autonPath?: { x: number; y: number }[];
   setAutonPath?: React.Dispatch<React.SetStateAction<{ x: number; y: number }[]>>;
   resetTrigger?: number;
-  yipeeCount?: number;
-  setYipeeCount?: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPath, setRobotPos, type, resetTrigger, yipeeCount, setYipeeCount}: imageClickProps) => {
+const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPath, setRobotPos, type, resetTrigger}: imageClickProps) => {
   const bubblewrapPOP = new Audio(bubblewrap);
   const YIPEEEE = new Audio(YIPEEE);
   
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [dotPositions, setDotPositions] = useState<{ x: number; y: number }[]>(Array.isArray(autonPath) ? autonPath : robotPos ? [robotPos] : []);
@@ -63,9 +62,6 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
     const randomSFX = Math.random();
     if (randomSFX <= .01) {
       YIPEEEE.play();
-      if (yipeeCount !== undefined && setYipeeCount !== undefined) {
-        setYipeeCount(yipeeCount + 1);
-      } 
     }
     else {
       bubblewrapPOP.play();
@@ -121,8 +117,8 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
     <div>
       <canvas
         ref={canvasRef}
-        width={'700'}
-        height={'350'}
+        width={vw / 1.5}
+        height={vw / 3}
         style={{ border: '1px solid black', borderRadius: '40px'}}
         onClick={handleClick}
         

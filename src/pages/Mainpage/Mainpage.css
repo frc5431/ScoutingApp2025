@@ -36,12 +36,13 @@
 }
 
 .checkboxtext {
-  margin-right: 2px;
+  margin-right: 1px;
+  font-size: 1.3rem;
 }
 
 .checkmark {
-  width: 30px; /* Size of the checkbox */
-  height: 30px; /* Size of the checkbox */
+  width: 25px; /* Size of the checkbox */
+  height: 25px; /* Size of the checkbox */
   background-color: #242424; /* Background color when unchecked */
   border-radius: 6px; /* Rounded corners */
   margin-right: 15px; /* Spacing between checkbox and label */

@@ -20,8 +20,6 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
   const [noshow, setNoshow] = useState(mainpageData.noshow || false);
   const [robotPos, setRobotPos] = useState(mainpageData.robotPos || '');
   
-  const [yipeeCount, setYipeeCount] = useState(0);
-
   const robotPosOptions: Option = [
     { label: 'Close', value: 'Close' },
     { label: 'Middle', value: 'Middle' },
@@ -92,10 +90,7 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
 
           <li>
             <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click The Button to Select)</label>
-            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos} yipeeCount={yipeeCount} setYipeeCount={setYipeeCount}></ImageClick>
-            {yipeeCount > 0 && (
-              <h3>Yippeeee Count is: {yipeeCount}</h3>
-            )}
+            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick>
             <RadioButtons vari={robotPos} setVari={setRobotPos} options={robotPosOptions} groupName="Robot Starting Position"></RadioButtons>
           </li>
      </ul>

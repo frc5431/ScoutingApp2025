@@ -8,7 +8,6 @@
 .countercontainer {
   display: flex;
   flex-direction: column;
-  margin: 3px;
   justify-content: center;
   align-items: center;
 }
@@ -22,7 +21,7 @@
 
 .counterdisplay {
   display:flex;
-  font-size: 2em;
+  font-size: 1.45em;
   width: 1.8em;
   text-align: center;
   justify-content: center;
@@ -45,7 +44,7 @@
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   font-weight: black;
-  font-size: 1.1em;
+  font-size: .8em;
   padding: 0.6em 0.8em;
 }
 
@@ -56,7 +55,7 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   font-weight: black;
-  font-size: 1.1em;
+  font-size: .8em;
   padding: 0.6em 0.8em;
 }
 

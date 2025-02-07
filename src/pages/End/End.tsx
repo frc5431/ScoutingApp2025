@@ -64,6 +64,10 @@ const End: React.FC<endProps> = ({
     setSubmitted(true);
   };
 
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  const usedForQR = Math.min(vw, vh);
+
   const resetValues = () => {
     setCompDayPerm(mainpageData.compDay);
 
@@ -142,7 +146,7 @@ const End: React.FC<endProps> = ({
         notes !== "" ? (
           <div className="popup-overlay">
             <div className="popup-container">
-              <QRCode value={JSON.stringify(allData)} size={document.documentElement.clientHeight - 100}/>
+              <QRCode value={JSON.stringify(allData)} size={usedForQR - 150}/>
               <button className="exit-button" onClick={() => { hidePopup("QRCODE") }}>EXIT</button>
             </div>
           </div>

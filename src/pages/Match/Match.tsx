@@ -28,7 +28,11 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
     { label: 'None', value: 'None'}
   ];
  
-
+  const [coopertiiton, setCoopertiiton] = useState(matchData.coopertiiton);
+   const coopertiitonOptions: Option = [
+    { label: 'Yes', value: 'Cooporated' },
+    { label: 'No', value: 'Not coopertition' },
+  ];
   useEffect(() => {
     setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage}))
     // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
@@ -97,7 +101,7 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
               onButtonUp={() => {if (netScoredBot < 99) setNetScoredBot(netScoredBot+1)}}
               onButtonDown={() => {if (netScoredBot > 0) setNetScoredBot(netScoredBot-1)}}
             />
-            <Counter
+            <Counter 
               name='Net Miss(🤖)'
               count={netMissBot}
               onButtonUp={() => {if (netMissBot < 99) setNetMissBot(netMissBot+1)}}
@@ -114,7 +118,7 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
             <div className="matchrow">
               
               <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
-              
+              <RadioButtons vari={coopertiiton} setVari={setCoopertiiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
             </div>
 
           </li>
