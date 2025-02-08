@@ -77,12 +77,12 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
             <label className="mainpage-checkbox">
             <input type="checkbox" checked={preload} onChange={e => setPreload(e.target.checked)}/>
             <span className="checkmark"></span>
-            <span className="checkboxtext">Pre load </span>
+            <span className="checkboxtext">Pre load</span>
             </label>
             <label className="mainpage-checkbox">
             <input type="checkbox" checked={noshow} onChange={e => setNoshow(e.target.checked)}/>
             <span className="checkmark"></span>
-            <span className="checkboxtext">No Show </span>
+            <span className="checkboxtext">No Show</span>
             </label>
             </div>
           </li>

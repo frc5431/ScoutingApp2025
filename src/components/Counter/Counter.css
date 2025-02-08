@@ -3,6 +3,7 @@
   flex-direction: row;
   gap: 2px;
   align-items: center;
+  
 }
 
 .countercontainer {
@@ -10,10 +11,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align:center;
+  justify-content: center;
+  max-width: 22vw;
+  
 }
 
 
 .countertitle {
+  max-width: 20vw;
   margin-bottom: -20px;
   margin-top: 0px;
   font-size: 1.5em;
@@ -35,6 +41,7 @@
   border-radius: 10px;
   background-color: var(--background-color);
   filter: brightness(1.2) contrast(120%) saturate(150%);
+  padding: 0.1em;
 }
 
 .leftbutton {

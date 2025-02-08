@@ -50,7 +50,6 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
           <ul>
             <li>
               <div className="autonCounters">
-                
                 <Counter
                   name='L1'
                   count={l1auton}
@@ -63,6 +62,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                   onButtonUp={() => {if (l2auton < 99) setl2auton(l2auton+1)}}
                   onButtonDown={() => {if (l2auton > 0) setl2auton(l2auton-1)}}
                 />
+                </div>
+                <div className="autonCounters">
                 <Counter
                   name='L3'
                   count={l3auton}
@@ -89,6 +90,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                   onButtonUp={() => {if (autonDeAlgae < 99) setAutonDeAlgae(autonDeAlgae+1)}}
                   onButtonDown={() => {if (autonDeAlgae > 0) setAutonDeAlgae(autonDeAlgae-1)}}
                 />
+                </div>
+                <div className="autonCounters">
                 <Counter
                   name='Algae Net'
                   count={autonAlgaeNet}

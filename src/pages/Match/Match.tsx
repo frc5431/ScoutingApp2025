@@ -4,11 +4,11 @@ import RadioButtons, { Option } from "../../components/radioButtons/radioButtons
 import './Match.css';
 
 export interface matchProps {
-  matchData: {[key: string]: any};
-  setMatchData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
+  matchData: { [key: string]: any };
+  setMatchData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
 }
 
-const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
+const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) => {
   const [l1Scored, setl1Scored] = useState(matchData.l1Scored || 0);
   const [l2Scored, setl2Scored] = useState(matchData.l2Scored || 0);
   const [l3Scored, setl3Scored] = useState(matchData.l3Scored || 0);
@@ -25,16 +25,16 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
     { label: 'Deep Climb', value: 'DeepClimb' },
     { label: 'Shallow Climb', value: 'ShallowClimb' },
     { label: 'Park', value: 'Park' },
-    { label: 'None', value: 'None'}
+    { label: 'None', value: 'None' }
   ];
- 
-  const [coopertiiton, setCoopertiiton] = useState(matchData.coopertiiton);
-   const coopertiitonOptions: Option = [
+
+  const [coopertiton, setCoopertiton] = useState(matchData.coopertiiton);
+  const coopertiitonOptions: Option = [
     { label: 'Yes', value: 'Cooporated' },
     { label: 'No', value: 'Not coopertition' },
   ];
   useEffect(() => {
-    setMatchData(oldData => ({...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage}))
+    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage }))
     // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
   }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage])
 
@@ -44,86 +44,89 @@ const Match: React.FC<matchProps> = ({matchData, setMatchData}: matchProps) => {
   };
 
   return (
-      <form onSubmit={handleSubmit}>
-        <ul>
-          
-          <li>
-            <div className="matchrow">
+    <form onSubmit={handleSubmit}>
+      <ul>
+
+        <li>
+          <div className="matchrow">
             <Counter
               name='L1'
               count={l1Scored}
-              onButtonUp={() => {if (l1Scored < 99) setl1Scored(l1Scored+1)}}
-              onButtonDown={() => {if (l1Scored > 0) setl1Scored(l1Scored-1)}}
+              onButtonUp={() => { if (l1Scored < 99) setl1Scored(l1Scored + 1) }}
+              onButtonDown={() => { if (l1Scored > 0) setl1Scored(l1Scored - 1) }}
             />
             <Counter
               name='L2'
               count={l2Scored}
-              onButtonUp={() => {if (l2Scored < 99) setl2Scored(l2Scored+1)}}
-              onButtonDown={() => {if (l2Scored > 0) setl2Scored(l2Scored-1)}}
+              onButtonUp={() => { if (l2Scored < 99) setl2Scored(l2Scored + 1) }}
+              onButtonDown={() => { if (l2Scored > 0) setl2Scored(l2Scored - 1) }}
             />
+            </div>
+            <div className="matchrow">
             <Counter
               name='L3'
               count={l3Scored}
-              onButtonUp={() => {if (l3Scored < 99) setl3Scored(l3Scored+1)}}
-              onButtonDown={() => {if (l3Scored > 0) setl3Scored(l3Scored-1)}}
+              onButtonUp={() => { if (l3Scored < 99) setl3Scored(l3Scored + 1) }}
+              onButtonDown={() => { if (l3Scored > 0) setl3Scored(l3Scored - 1) }}
             />
             <Counter
               name='L4'
               count={l4Scored}
-              onButtonUp={() => {if(l4Scored < 99) setl4Scored(l4Scored+1)}}
-              onButtonDown={() => {if (l4Scored > 0) setl4Scored(l4Scored-1)}}
+              onButtonUp={() => { if (l4Scored < 99) setl4Scored(l4Scored + 1) }}
+              onButtonDown={() => { if (l4Scored > 0) setl4Scored(l4Scored - 1) }}
             />
-            </div>
-            <div className="matchrow">
+          </div>
+          <div className="matchrow">
             <Counter
               name='Net Scored(🗿)'
               count={netScoredHuman}
-              onButtonUp={() => {if (netScoredHuman < 99) setNetScoredHuman(netScoredHuman+1)}}
-              onButtonDown={() => {if (netScoredHuman > 0) setNetScoredHuman(netScoredHuman-1)}}
+              onButtonUp={() => { if (netScoredHuman < 99) setNetScoredHuman(netScoredHuman + 1) }}
+              onButtonDown={() => { if (netScoredHuman > 0) setNetScoredHuman(netScoredHuman - 1) }}
             />
             <Counter
               name='Net Miss(🗿)'
               count={netMissHuman}
-              onButtonUp={() => {if (netMissHuman < 99) setNetMissHuman(netMissHuman+1)}}
-              onButtonDown={() => {if (netMissHuman > 0) setNetMissHuman(netMissHuman-1)}}
+              onButtonUp={() => { if (netMissHuman < 99) setNetMissHuman(netMissHuman + 1) }}
+              onButtonDown={() => { if (netMissHuman > 0) setNetMissHuman(netMissHuman - 1) }}
             />
-            <Counter
-              name='Coral Missed'
-              count={coralMissed}
-              onButtonUp={() => {if(coralMissed < 99) setCoralMissed(coralMissed+1)}}
-              onButtonDown={() => {if (coralMissed > 0) setCoralMissed(coralMissed-1)}}
-            />
-            </div>
-            <div className="matchrow">
+          </div>
+          <div className="matchrow">
             <Counter
               name='Net Scored(🤖)'
               count={netScoredBot}
-              onButtonUp={() => {if (netScoredBot < 99) setNetScoredBot(netScoredBot+1)}}
-              onButtonDown={() => {if (netScoredBot > 0) setNetScoredBot(netScoredBot-1)}}
+              onButtonUp={() => { if (netScoredBot < 99) setNetScoredBot(netScoredBot + 1) }}
+              onButtonDown={() => { if (netScoredBot > 0) setNetScoredBot(netScoredBot - 1) }}
             />
-            <Counter 
+            <Counter
               name='Net Miss(🤖)'
               count={netMissBot}
-              onButtonUp={() => {if (netMissBot < 99) setNetMissBot(netMissBot+1)}}
-              onButtonDown={() => {if (netMissBot > 0) setNetMissBot(netMissBot-1)}}
+              onButtonUp={() => { if (netMissBot < 99) setNetMissBot(netMissBot + 1) }}
+              onButtonDown={() => { if (netMissBot > 0) setNetMissBot(netMissBot - 1) }}
             />
-
+          </div>
+          <div className="matchrow">
+            <Counter
+              name='Coral Missed'
+              count={coralMissed}
+              onButtonUp={() => { if (coralMissed < 99) setCoralMissed(coralMissed + 1) }}
+              onButtonDown={() => { if (coralMissed > 0) setCoralMissed(coralMissed - 1) }}
+            />
             <Counter
               name='Processor'
               count={processorScored}
-              onButtonUp={() => {if (processorScored < 99) setProcessorScored(processorScored+1)}}
-              onButtonDown={() => {if (processorScored > 0) setProcessorScored(processorScored-1)}}
-            />
-            </div>
-            <div className="matchrow">
-              
-              <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
-              <RadioButtons vari={coopertiiton} setVari={setCoopertiiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
-            </div>
+              onButtonUp={() => { if (processorScored < 99) setProcessorScored(processorScored + 1) }}
+              onButtonDown={() => { if (processorScored > 0) setProcessorScored(processorScored - 1) }}
+            />  
+          </div>
+          <div className="matchrow">
 
-          </li>
-        </ul>
-      </form>
+            <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
+            <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
+          </div>
+
+        </li>
+      </ul>
+    </form>
   );
 };
 
