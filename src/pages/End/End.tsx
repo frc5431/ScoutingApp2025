@@ -6,7 +6,7 @@ import { triggerConfetti } from "../../components/triggerConfetti";
 import pickupduck from "../../assets/pickupduck.jpg";
 import Field from "../../components/Field/Field";
 import './End.css';
-
+import { v4 as uuidv4 } from 'uuid';
 export interface endProps {
   endData: { [key: string]: any };
   setEndData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
@@ -58,9 +58,14 @@ const End: React.FC<endProps> = ({
     setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated }));
   }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated]);
 
+  const [UUID, setUUID] = useState(uuidv4().toString());
+  const QRuuid = {'QRCodeID': UUID}
+
+
   const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    setAllData({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, });
-    console.log({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, });
+    
+    setAllData({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, QRuuid});
+    console.log({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, QRuuid});
     setSubmitted(true);
   };
 
@@ -75,7 +80,7 @@ const End: React.FC<endProps> = ({
     setMatchData({});
     setAutonData({});
     setEndData({});
-
+    setUUID("")
     setPage("Mainpage");
     triggerConfetti('burst', '5431');
     triggerConfetti('cannon', '5431');
