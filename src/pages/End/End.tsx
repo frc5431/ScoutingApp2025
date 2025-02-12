@@ -69,8 +69,8 @@ const End: React.FC<endProps> = ({
 
   const [allData, setAllData] = useState<{ [key: string]: any }>();
   useEffect(() => {
-    setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated }));
-  }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated]);
+    setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated, stage, coopertiton}));
+  }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated, stage, coopertiton]);
 
   const [UUID, setUUID] = useState(uuidv4().toString());
   const QRuuid =  UUID.toString();
