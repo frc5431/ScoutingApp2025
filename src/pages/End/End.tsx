@@ -59,15 +59,32 @@ const End: React.FC<endProps> = ({
   }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated]);
 
   const [UUID, setUUID] = useState(uuidv4().toString());
-  const QRuuid = {'QRCodeID': UUID}
+  const QRuuid =  UUID.toString();
 
+  
 
-  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  setEndData({...endData, QRuuid})
+  
+    // First log each piece of data separately
+    console.log('Raw data before merge:');
+    console.log('mainpageData:', mainpageData);
+    console.log('autonData:', autonData);
+    console.log('matchData:', matchData);
+    console.log('endData:', endData);
+    console.log('QRuuid:', QRuuid);
+
+    // Create the merged data
     
-    setAllData({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, QRuuid});
-    console.log({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, QRuuid});
+    const mergedData = { ...mainpageData, ...autonData, ...matchData, ...endData };
+    
+    // Log the actual string that will be encoded in QR
+    console.log('QR Code String:', JSON.stringify(mergedData));
+    
+    setAllData(mergedData);
     setSubmitted(true);
-  };
+};
+
 
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);

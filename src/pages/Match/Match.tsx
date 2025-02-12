@@ -28,15 +28,14 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
     { label: 'None', value: 'None' }
   ];
 
-  const [coopertiton, setCoopertiton] = useState(matchData.coopertiiton);
-  const coopertiitonOptions: Option = [
+  const [coopertition, setcoopertition] = useState(matchData.coopertition);
+  const coopertitionOptions: Option = [
     { label: 'Yes', value: 'Cooporated' },
     { label: 'No', value: 'Not coopertition' },
   ];
   useEffect(() => {
-    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage }))
-    // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
-  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage])
+    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage, coopertition }))
+  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage, coopertition])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission
@@ -121,7 +120,7 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
           <div className="matchrow">
 
             <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
-            <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
+            <RadioButtons vari={coopertition} setVari={setcoopertition} options={coopertitionOptions} groupName="Coopertition"></RadioButtons>
           </div>
 
         </li>
