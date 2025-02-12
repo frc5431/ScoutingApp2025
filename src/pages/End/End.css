@@ -15,9 +15,10 @@
 }
 
 .submitButton {
-  font-size: 3em;
+  font-size: 2em;
   background-color: #008000;
   border: 10px solid white;
+  margin-right: 4vw;
   animation: 
     rainbow-pulse 10s infinite alternate,
     rainbow-glow 10s infinite alternate;
@@ -114,7 +115,7 @@
 }
 
 .clearButton {
-  font-size: 3em;
+  font-size: 2em;
   margin-top: 2vh;
 }
 
@@ -123,4 +124,22 @@
     font-size: 14px;
     padding: 8px 16px;
   }
+}
+
+.endrow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.endrow > * {
+  flex: 1 1 auto; 
+}
+
+.buttonscontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

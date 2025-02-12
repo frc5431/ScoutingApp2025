@@ -48,7 +48,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
       <div>
         <form onSubmit={handleSubmit}>
           <ul>
-            <li>
+            <li style={{paddingBottom:0}}>
               <div className="autonCounters">
                 <Counter
                   name='L1'
@@ -106,7 +106,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                 />
               </div>
             </li>
-            <li>
+            <li style={{paddingTop:0}}>
             <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
             </li>
             <div>

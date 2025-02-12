@@ -20,23 +20,11 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
   const [netMissBot, setNetMissBot] = useState(matchData.netMissBot || 0);
   const [processorScored, setProcessorScored] = useState(matchData.processorScored || 0);
 
-  const [stage, setStage] = useState(matchData.stage || '');
-  const stageOptions: Option = [
-    { label: 'Deep Climb', value: 'DeepClimb' },
-    { label: 'Shallow Climb', value: 'ShallowClimb' },
-    { label: 'Park', value: 'Park' },
-    { label: 'None', value: 'None' }
-  ];
-
-  const [coopertiton, setCoopertiton] = useState(matchData.coopertiiton);
-  const coopertiitonOptions: Option = [
-    { label: 'Yes', value: 'Cooporated' },
-    { label: 'No', value: 'Not coopertition' },
-  ];
+  
   useEffect(() => {
-    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage }))
+    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored}))
     // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
-  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage])
+  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission
@@ -117,12 +105,7 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
               onButtonUp={() => { if (processorScored < 99) setProcessorScored(processorScored + 1) }}
               onButtonDown={() => { if (processorScored > 0) setProcessorScored(processorScored - 1) }}
             />  
-          </div>
-          <div className="matchrow">
-
-            <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
-            <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
-          </div>
+          </div>  
 
         </li>
       </ul>

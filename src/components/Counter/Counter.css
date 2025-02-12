@@ -14,7 +14,6 @@
   text-align:center;
   justify-content: center;
   max-width: 22vw;
-  
 }
 
 
@@ -23,6 +22,7 @@
   margin-bottom: -20px;
   margin-top: 0px;
   font-size: 1.5em;
+  text-align: center;
 }
 
 .counterdisplay {
