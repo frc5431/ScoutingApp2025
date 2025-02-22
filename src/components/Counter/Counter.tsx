@@ -7,7 +7,6 @@ interface Props {
   count: number;
   onButtonUp: () => void;
   onButtonDown: () => void;
-  
 }
 
 function Counter({ name, count, onButtonDown, onButtonUp, }: Props) {

@@ -3,7 +3,6 @@
   flex-direction: row;
   gap: 2px;
   align-items: center;
-  
 }
 
 .countercontainer {
@@ -14,7 +13,6 @@
   text-align:center;
   justify-content: center;
   max-width: 22vw;
-  
 }
 
 

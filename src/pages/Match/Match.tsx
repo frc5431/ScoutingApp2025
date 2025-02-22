@@ -19,7 +19,8 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
   const [netScoredBot, setNetScoredBot] = useState(matchData.netScoredBot || 0);
   const [netMissBot, setNetMissBot] = useState(matchData.netMissBot || 0);
   const [processorScored, setProcessorScored] = useState(matchData.processorScored || 0);
-
+  const [matchDeAlgae, setMatchDeAlgae] = useState(matchData.mathDeAlgae || 0);
+  
   const [stage, setStage] = useState(matchData.stage || '');
   const stageOptions: Option = [
     { label: 'Deep Climb', value: 'DeepClimb' },
@@ -105,6 +106,12 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
           </div>
           <div className="matchrow">
             <Counter
+              name='De-Algae'
+              count={matchDeAlgae}
+              onButtonUp={() => {if (matchDeAlgae < 99) setMatchDeAlgae(matchDeAlgae + 1)}}
+              onButtonDown={() => {if (matchDeAlgae > 0) setMatchDeAlgae(matchDeAlgae - 1)}}
+            />
+            <Counter
               name='Coral Missed'
               count={coralMissed}
               onButtonUp={() => { if (coralMissed < 99) setCoralMissed(coralMissed + 1) }}
@@ -115,7 +122,7 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
               count={processorScored}
               onButtonUp={() => { if (processorScored < 99) setProcessorScored(processorScored + 1) }}
               onButtonDown={() => { if (processorScored > 0) setProcessorScored(processorScored - 1) }}
-            />  
+            />
           </div>
           <div className="matchrow">
 

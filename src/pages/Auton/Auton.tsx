@@ -16,7 +16,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [l3auton, setl3auton] = useState(autonData.l3auton || 0);
   const [l4auton, setl4auton] = useState(autonData.l4auton || 0);
 
-  const [autonCoralMissed, setAutonCoralMissed] = useState(autonData.autonCoralMissed    || 0);
+  const [autonCoralMissed, setAutonCoralMissed] = useState(autonData.autonCoralMissed || 0);
   const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
   const [autonAlgaeNet, setAutonAlgaeNet] = useState(autonData.autonAlgaeNet || 0);
   const [autonProcessor, setAutonProcessor] = useState(autonData.autonProcessor || 0);
