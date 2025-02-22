@@ -125,12 +125,6 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
               onButtonDown={() => { if (processorScored > 0) setProcessorScored(processorScored - 1) }}
             />
           </div>
-          <div className="matchrow">
-
-            <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
-            <RadioButtons vari={coopertition} setVari={setcoopertition} options={coopertitionOptions} groupName="Coopertition"></RadioButtons>
-          </div>
-
         </li>
       </ul>
     </form>
