@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti';
 export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks' = 'basic', color: string) => {
   let colors: string[] = ['']; 
 
-  switch (color) {
+  switch (color) { 
     case '5431':
       colors = ['#9370DB', '#3673CD', '#00D4E3', '#7D61CF'];
       break;
