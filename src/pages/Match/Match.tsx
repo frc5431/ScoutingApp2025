@@ -35,8 +35,9 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
     { label: 'No', value: 'Not coopertition' },
   ];
   useEffect(() => {
-    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage, coopertition }))
-  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored, stage, coopertition])
+    setMatchData(oldData => ({ ...oldData, l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored}))
+    // console.log('stage', stage, 'coopertiiton', coopertition, 'spotlight', spotlight)
+  }, [l2Scored, l3Scored, l1Scored, l4Scored, coralMissed, netScoredHuman, netMissHuman, netScoredBot, netMissBot, processorScored])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevents the default form submission

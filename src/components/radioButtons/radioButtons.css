@@ -7,15 +7,14 @@
 }
 
 .radio-group {
-  margin-bottom: clamp(1rem, 3vw, 2rem);
   max-width: 100%;
 }
 
 .radio-title {
   font-size: clamp(1.2rem, 4vw, 1.8rem);
-  margin-bottom: clamp(0.5rem, 2vw, 1rem);
   color: var(--text-color);
   font-weight: 600;
+  margin-top: 0.5vh;
 }
 
 .radio-options {

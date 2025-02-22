@@ -50,13 +50,27 @@ const End: React.FC<endProps> = ({
     { label: 'No', value: 'No' }
   ];
 
+  const [stage, setStage] = useState(matchData.stage || '');
+  const stageOptions: Option = [
+    { label: 'Deep Climb', value: 'DeepClimb' },
+    { label: 'Shallow Climb', value: 'ShallowClimb' },
+    { label: 'Park', value: 'Park' },
+    { label: 'None', value: 'None' }
+  ];
+
+  const [coopertiton, setCoopertiton] = useState(matchData.coopertiiton);
+  const coopertiitonOptions: Option = [
+    { label: 'Yes', value: 'Cooporated' },
+    { label: 'No', value: 'Not coopertition' },
+  ];
+
   const [submitted, setSubmitted] = useState(false);
   const [clearedConfirmed, setClearedConfirmed] = useState(false);
 
   const [allData, setAllData] = useState<{ [key: string]: any }>();
   useEffect(() => {
-    setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated }));
-  }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated]);
+    setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated, stage, coopertiton}));
+  }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated, stage, coopertiton]);
 
   const [UUID, setUUID] = useState(uuidv4().toString());
   const QRuuid =  UUID.toString();
@@ -93,7 +107,7 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
   const resetValues = () => {
     setCompDayPerm(mainpageData.compDay);
 
-    setMainpageData({compDay : compDayPerm});
+    setMainpageData({ compDay: compDayPerm });
     setMatchData({});
     setAutonData({});
     setEndData({});
@@ -126,7 +140,7 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
         <Notes notes={notes} setNotes={setNotes} placeholder="Do good notes or the SNS team will haunt you"></Notes>
         <ul>
           <div className="input-row">
-            <li>      
+            <li>
               <div className="inputcolorredpointscool">
                 <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 68"></Field>
               </div>
@@ -147,6 +161,13 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
               <Field type="number" value={RP} setValue={setRP} groupName="Ranking Points" min={0} max={RP_MAX} placeHolder="Ex: 2"></Field>
             </li>
           </div>
+          <div>
+            <div className="endrow">
+
+              <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
+              <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
+            </div>
+          </div>
           <div className="omgsexyrow">
             <li>
               <RadioButtons vari={deactivated} setVari={setDeactivated} options={deactivatedOptions} groupName="Deactivated"></RadioButtons>
@@ -156,11 +177,13 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
             </li>
           </div>
         </ul>
-        <div>
+        <div className="buttoncontainer ">
+        
           <button onClick={handleSubmit} className="submitButton">SUBMIT!</button>
-        </div>
-        <div>
+        
+       
           <button onClick={() => (setClearedConfirmed(true))} className="clearButton">CLEAR</button>
+      
         </div>
       </form>
 
@@ -168,7 +191,7 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
         notes !== "" ? (
           <div className="popup-overlay">
             <div className="popup-container">
-              <QRCode value={JSON.stringify(allData)} size={usedForQR - 150}/>
+              <QRCode value={JSON.stringify(allData)} size={usedForQR - 150} />
               <button className="exit-button" onClick={() => { hidePopup("QRCODE") }}>EXIT</button>
             </div>
           </div>
