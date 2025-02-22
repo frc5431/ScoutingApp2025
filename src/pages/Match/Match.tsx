@@ -19,7 +19,7 @@ const Match: React.FC<matchProps> = ({ matchData, setMatchData }: matchProps) =>
   const [netScoredBot, setNetScoredBot] = useState(matchData.netScoredBot || 0);
   const [netMissBot, setNetMissBot] = useState(matchData.netMissBot || 0);
   const [processorScored, setProcessorScored] = useState(matchData.processorScored || 0);
-  const [matchDeAlgae, setMatchDeAlgae] = useState(matchData.mathDeAlgae || 0);
+  const [matchDeAlgae, setMatchDeAlgae] = useState(matchData.matchDeAlgae || 0);
   
   const [stage, setStage] = useState(matchData.stage || '');
   const stageOptions: Option = [
