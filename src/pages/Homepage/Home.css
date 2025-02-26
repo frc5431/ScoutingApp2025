@@ -1,0 +1,86 @@
+/* Cool Purple and Dark Blue Number Theme - Numbers Only */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+h1 span {
+    font-size: 12rem;
+    font-weight: 800;
+    display: inline-block;
+    color: transparent;
+    background-image: linear-gradient(45deg, #8a2be2, #4169e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0 10px;
+    position: relative;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  h1 span:hover {
+    transform: translateY(-5px);
+    text-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+  }
+  
+  /* Add a subtle glow effect under each number */
+  h1 span::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, #4169e1, #8a2be2);
+    border-radius: 2px;
+    filter: blur(2px);
+  }
+
+  h2 {
+    font-size: 5rem;
+    margin: 0;
+  }
+
+  .title {
+    display: flex;
+    align-items: start;
+  }
+
+  .scoutingButton {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    font-size: 3.5rem;
+    color:aquamarine;
+    animation: scoutingPulse 6s infinite,
+    wave 3s infinite linear;
+    border-radius: 40px;
+    padding: 3vw;
+    background-color: transparent;
+
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #00BFFF;
+    text-shadow: 0px 0px 10px rgba(0, 191, 255, 0.8), 
+                 0px 0px 20px rgba(0, 191, 255, 0.6),
+                 0px 0px 30px rgba(0, 191, 255, 0.4);
+  }
+
+@keyframes wave {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes scoutingPulse {
+    0%{
+        box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.3);
+    }
+    50%{
+        box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.6);
+    }
+    100%{
+        box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.3);
+    }
+}
+
+.patchnotes {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
