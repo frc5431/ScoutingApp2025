@@ -1,7 +1,7 @@
 /* Cool Purple and Dark Blue Number Theme - Numbers Only */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-h1 span {
+.h1 span {
     font-size: 12rem;
     font-weight: 800;
     display: inline-block;
@@ -14,13 +14,13 @@ h1 span {
     transition: transform 0.3s ease, text-shadow 0.3s ease;
   }
   
-  h1 span:hover {
+.h1 span:hover {
     transform: translateY(-5px);
     text-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
   }
   
   /* Add a subtle glow effect under each number */
-  h1 span::after {
+.h1 span::after {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -32,9 +32,150 @@ h1 span {
     filter: blur(2px);
   }
 
-  h2 {
+  body {
+    background-color: #001a33;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
+    position: relative;
+    text-align: center;
+  }
+  
+  .h2 {
     font-size: 5rem;
     margin: 0;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    background: linear-gradient(
+      to right,
+      #ff0080, #ff8c00, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 400% 100%;
+    animation: rainbow-wave 8s alternate infinite, float 3s ease-in-out infinite;
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.2);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  }
+  
+  .bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    animation: bubble-rise linear infinite;
+    opacity: 0.7;
+  }
+  
+  /* Rainbow bubbles */
+  .bubble:nth-child(1) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 0, 128, 0.4));
+    width: 20px; height: 20px; left: 10%; animation-duration: 8s; animation-delay: 0s;
+  }
+  .bubble:nth-child(2) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 140, 0, 0.4));
+    width: 15px; height: 15px; left: 20%; animation-duration: 10s; animation-delay: 1s;
+  }
+  .bubble:nth-child(3) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 0, 0.4));
+    width: 25px; height: 25px; left: 35%; animation-duration: 7s; animation-delay: 2s;
+  }
+  .bubble:nth-child(4) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(0, 255, 0, 0.4));
+    width: 10px; height: 10px; left: 50%; animation-duration: 11s; animation-delay: 0.5s;
+  }
+  .bubble:nth-child(5) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(0, 255, 255, 0.4));
+    width: 18px; height: 18px; left: 65%; animation-duration: 9s; animation-delay: 1.5s;
+  }
+  .bubble:nth-child(6) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(0, 128, 255, 0.4));
+    width: 22px; height: 22px; left: 80%; animation-duration: 8.5s; animation-delay: 2.5s;
+  }
+  .bubble:nth-child(7) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(128, 0, 255, 0.4));
+    width: 12px; height: 12px; left: 90%; animation-duration: 10.5s; animation-delay: 0s;
+  }
+  
+  .ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 30, 60, 0.3) 0%, rgba(0, 0, 0, 0) 50%);
+    mask-image: url('/api/placeholder/400/100');
+    animation: ripple 4s ease-in-out infinite;
+    opacity: 0.6;
+  }
+  
+  .water-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+    animation: water-shimmer 5s alternate infinite;
+    pointer-events: none;
+  }
+  
+  .water-reflection {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: scaleY(-0.3) translateY(-10px);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  
+  .water-reflection .h2 {
+    opacity: 0.7;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  @keyframes bubble-rise {
+    0% { transform: translateY(100vh); opacity: 0.7; }
+    100% { transform: translateY(-20px); opacity: 0; }
+  }
+  
+  @keyframes ripple {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+  
+  @keyframes rainbow-wave {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  
+  @keyframes water-shimmer {
+    0% { transform: translateX(-100%) skewX(45deg); }
+    100% { transform: translateX(100%) skewX(45deg); }
   }
 
   .title {
@@ -52,8 +193,8 @@ h1 span {
     border-radius: 40px;
     padding: 3vw;
     background-color: transparent;
+    font-family: Ubuntu;
 
-    font-family: 'Pacifico', cursive;
     font-size: 3rem;
     color: #00BFFF;
     text-shadow: 0px 0px 10px rgba(0, 191, 255, 0.8), 
@@ -80,7 +221,36 @@ h1 span {
 }
 
 .patchnotes {
+    display: flex;
     position: absolute;
+    top: 0;
     right: 0;
-    bottom: 0;
+    margin-top: 3vh;
+    margin-right: 2vw;
+    font-size: 1.4rem;
+    align-items: center;
+}
+
+.patchbutton{
+    display:flex;
+    align-items:'center';
+    background-color: transparent;
+}
+
+.versionNumber {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2.2vh;
+    margin-left: 5vw;
+    font-size: 1.3rem;
+    align-items: center;
+}
+
+.verisonSelector {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  background-color: transparent;
 }
