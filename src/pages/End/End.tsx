@@ -6,7 +6,7 @@ import { triggerConfetti } from "../../components/triggerConfetti";
 import pickupduck from "../../assets/pickupduck.jpg";
 import Field from "../../components/Field/Field";
 import './End.css';
-
+import { v4 as uuidv4 } from 'uuid';
 export interface endProps {
   endData: { [key: string]: any };
   setEndData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
@@ -50,31 +50,71 @@ const End: React.FC<endProps> = ({
     { label: 'No', value: 'No' }
   ];
 
+  const [stage, setStage] = useState(matchData.stage || '');
+  const stageOptions: Option = [
+    { label: 'Deep Climb', value: 'DeepClimb' },
+    { label: 'Shallow Climb', value: 'ShallowClimb' },
+    { label: 'Park', value: 'Park' },
+    { label: 'None', value: 'None' }
+  ];
+
+  const [coopertiton, setCoopertiton] = useState(matchData.coopertiiton);
+  const coopertiitonOptions: Option = [
+    { label: 'Yes', value: 'Cooporated' },
+    { label: 'No', value: 'Not coopertition' },
+  ];
+
   const [submitted, setSubmitted] = useState(false);
   const [clearedConfirmed, setClearedConfirmed] = useState(false);
 
   const [allData, setAllData] = useState<{ [key: string]: any }>();
   useEffect(() => {
-    setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated }));
-  }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated]);
+    setEndData((oldData) => ({ ...oldData, notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated, stage, coopertiton}));
+  }, [notes, redPoints, bluePoints, penalties, RP, playedDefense, deactivated, stage, coopertiton]);
 
-  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    setAllData({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, });
-    console.log({ ...mainpageData, ...autonData, ...autonData, ...endData, ...matchData, });
+  const [UUID, setUUID] = useState(uuidv4().toString());
+  const QRuuid =  UUID.toString();
+
+  
+
+const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  setEndData({...endData, QRuuid})
+  
+    // First log each piece of data separately
+    console.log('Raw data before merge:');
+    console.log('mainpageData:', mainpageData);
+    console.log('autonData:', autonData);
+    console.log('matchData:', matchData);
+    console.log('endData:', endData);
+    console.log('QRuuid:', QRuuid);
+
+    // Create the merged data
+    
+    const mergedData = { ...mainpageData, ...autonData, ...matchData, ...endData };
+    
+    // Log the actual string that will be encoded in QR
+    console.log('QR Code String:', JSON.stringify(mergedData));
+    
+    setAllData(mergedData);
     setSubmitted(true);
-  };
+};
+
+
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  const usedForQR = Math.min(vw, vh);
 
   const resetValues = () => {
     setCompDayPerm(mainpageData.compDay);
 
-    setMainpageData({compDay : compDayPerm});
+    setMainpageData({ compDay: compDayPerm });
     setMatchData({});
     setAutonData({});
     setEndData({});
-
-    setPage("Mainpage")
-    triggerConfetti('burst', '5431')
-    triggerConfetti('cannon', '5431')
+    setUUID("")
+    setPage("Mainpage");
+    triggerConfetti('burst', '5431');
+    triggerConfetti('cannon', '5431');
   }
   const hidePopup = (popup: string) => {
     switch (popup) {
@@ -100,7 +140,7 @@ const End: React.FC<endProps> = ({
         <Notes notes={notes} setNotes={setNotes} placeholder="Do good notes or the SNS team will haunt you"></Notes>
         <ul>
           <div className="input-row">
-            <li>      
+            <li>
               <div className="inputcolorredpointscool">
                 <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 68"></Field>
               </div>
@@ -121,6 +161,13 @@ const End: React.FC<endProps> = ({
               <Field type="number" value={RP} setValue={setRP} groupName="Ranking Points" min={0} max={RP_MAX} placeHolder="Ex: 2"></Field>
             </li>
           </div>
+          <div>
+            <div className="endrow">
+
+              <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
+              <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
+            </div>
+          </div>
           <div className="omgsexyrow">
             <li>
               <RadioButtons vari={deactivated} setVari={setDeactivated} options={deactivatedOptions} groupName="Deactivated"></RadioButtons>
@@ -130,11 +177,13 @@ const End: React.FC<endProps> = ({
             </li>
           </div>
         </ul>
-        <div>
+        <div className="buttoncontainer ">
+        
           <button onClick={handleSubmit} className="submitButton">SUBMIT!</button>
-        </div>
-        <div>
+        
+       
           <button onClick={() => (setClearedConfirmed(true))} className="clearButton">CLEAR</button>
+      
         </div>
       </form>
 
@@ -142,7 +191,7 @@ const End: React.FC<endProps> = ({
         notes !== "" ? (
           <div className="popup-overlay">
             <div className="popup-container">
-              <QRCode value={JSON.stringify(allData)} />
+              <QRCode value={JSON.stringify(allData)} size={usedForQR - 150} />
               <button className="exit-button" onClick={() => { hidePopup("QRCODE") }}>EXIT</button>
             </div>
           </div>

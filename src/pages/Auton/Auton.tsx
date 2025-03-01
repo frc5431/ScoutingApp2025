@@ -16,7 +16,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
   const [l3auton, setl3auton] = useState(autonData.l3auton || 0);
   const [l4auton, setl4auton] = useState(autonData.l4auton || 0);
 
-  const [autonCoralMissed, setAutonCoralMissed] = useState(autonData.autonCoralMissed    || 0);
+  const [autonCoralMissed, setAutonCoralMissed] = useState(autonData.autonCoralMissed || 0);
   const [autonDeAlgae, setAutonDeAlgae] = useState(autonData.autonDeAlgae || 0);
   const [autonAlgaeNet, setAutonAlgaeNet] = useState(autonData.autonAlgaeNet || 0);
   const [autonProcessor, setAutonProcessor] = useState(autonData.autonProcessor || 0);
@@ -48,9 +48,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
       <div>
         <form onSubmit={handleSubmit}>
           <ul>
-            <li>
+            <li style={{paddingBottom:0}}>
               <div className="autonCounters">
-                
                 <Counter
                   name='L1'
                   count={l1auton}
@@ -63,6 +62,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                   onButtonUp={() => {if (l2auton < 99) setl2auton(l2auton+1)}}
                   onButtonDown={() => {if (l2auton > 0) setl2auton(l2auton-1)}}
                 />
+                </div>
+                <div className="autonCounters">
                 <Counter
                   name='L3'
                   count={l3auton}
@@ -89,6 +90,8 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                   onButtonUp={() => {if (autonDeAlgae < 99) setAutonDeAlgae(autonDeAlgae+1)}}
                   onButtonDown={() => {if (autonDeAlgae > 0) setAutonDeAlgae(autonDeAlgae-1)}}
                 />
+                </div>
+                <div className="autonCounters">
                 <Counter
                   name='Algae Net'
                   count={autonAlgaeNet}
@@ -103,7 +106,7 @@ const Auton: React.FC<autonProps> = ({autonData, setAutonData}: autonProps) => {
                 />
               </div>
             </li>
-            <li>
+            <li style={{paddingTop:0}}>
             <RadioButtons vari={leftStart} setVari={setLeftStart} options={leftStartOptions} groupName="Left Start" />
             </li>
             <div>

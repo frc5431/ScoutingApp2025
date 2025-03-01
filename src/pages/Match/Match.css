@@ -1,6 +1,12 @@
 .matchrow {
-  display:flex;
-  padding:0px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.matchrow > * {
+  flex: 1 1 auto; /* grow | shrink | basis */
 }

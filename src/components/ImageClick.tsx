@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
+import bubblewrap from "../../src/assets/bublewarpPOP.wav";
+import YIPEEE from "../../src/assets/yippeeeeeeeeeeeeee.mp3";
 
 export interface imageClickProps {
   type: string;
@@ -10,6 +12,11 @@ export interface imageClickProps {
 }
 
 const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPath, setRobotPos, type, resetTrigger}: imageClickProps) => {
+  const bubblewrapPOP = new Audio(bubblewrap);
+  const YIPEEEE = new Audio(YIPEEE);
+  
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [dotPositions, setDotPositions] = useState<{ x: number; y: number }[]>(Array.isArray(autonPath) ? autonPath : robotPos ? [robotPos] : []);
   
@@ -52,6 +59,14 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
   };
 
   const handleClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    const randomSFX = Math.random();
+    if (randomSFX <= .01) {
+      YIPEEEE.play();
+    }
+    else {
+      bubblewrapPOP.play();
+    }
+
     if (type === "one" && dotPositions.length > 0) {
       setDotPositions(prevPositions => prevPositions.slice(0, -1));
     }
@@ -102,10 +117,11 @@ const ImageClick: React.FC<imageClickProps> = ({robotPos, autonPath, setAutonPat
     <div>
       <canvas
         ref={canvasRef}
-        width={700}
-        height={350}
+        width={vw / 1.5}
+        height={vw / 3}
         style={{ border: '1px solid black', borderRadius: '40px'}}
         onClick={handleClick}
+        
       />
     </div>
   );

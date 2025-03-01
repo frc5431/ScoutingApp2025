@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './radioButtons.css'; 
+import '../../index.css'
 
 export interface radioButtonProps {
   setVari: React.Dispatch<React.SetStateAction<string>>; 
@@ -9,6 +10,8 @@ export interface radioButtonProps {
 }
 
 const RadioButtons: React.FC<radioButtonProps> = ({vari, setVari, options, groupName} : radioButtonProps) => {
+
+
   return (
     <div className="radio-group">
       <p className="radio-title"><strong>{groupName}</strong></p>

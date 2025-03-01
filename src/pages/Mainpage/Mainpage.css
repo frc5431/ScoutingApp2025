@@ -27,7 +27,8 @@
 }
 
 .mainpage-checkbox input:checked + .checkmark {
-  background-color: #007bff; /* Background color when checked */
+  background-color: #10b14b; /* Background color when checked */
+  animation: checkmarkChecked 2.5s infinite;
 }
 
 .mainpage-checkbox input:checked + .checkmark:after {
@@ -35,12 +36,13 @@
 }
 
 .checkboxtext {
-  margin-right: 2px;
+  margin-right: 1px;
+  font-size: 1.25rem;
 }
 
 .checkmark {
-  width: 30px; /* Size of the checkbox */
-  height: 30px; /* Size of the checkbox */
+  width: 25px; /* Size of the checkbox */
+  height: 25px; /* Size of the checkbox */
   background-color: #242424; /* Background color when unchecked */
   border-radius: 6px; /* Rounded corners */
   margin-right: 15px; /* Spacing between checkbox and label */
@@ -53,8 +55,8 @@
   position: absolute;
   left: 9px;
   top: 3px;
-  width: 7.5px;
-  height: 15px;
+  width: 5px;
+  height: 13px;
   border: solid white; /* Checkmark color */
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
@@ -62,6 +64,17 @@
   transition: opacity 0.2s;
 }
 
+@keyframes checkmarkChecked {
+  0% {
+  box-shadow: 0 0 20px #10b14b;
+    }
+  50% {
+    box-shadow: 0 0 10px #10b14b;
+   }
+  100% {
+    box-shadow: 0 0 20px #10b14b;
+    }
+}
 
 .defaultAllianceButtonColor {
   background-color: #4e4e4e;
@@ -203,3 +216,4 @@
   transform: scale(0.98);
   box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
 }
+
