@@ -39,7 +39,7 @@ const Homepage: React.FC<Homeprops> = ({ setPage }) => {
                 <button className="scoutingButton"
                     onClick={() => { setPage("Mainpage"); }}>Start Scouting!</button>
                 <div className="versionNumber">
-                    <p>Version: HOPEFULLY_DONE_16v</p>
+                    <p>Version: HOPEFULLY_DONE_16.1v</p>
                 </div>
             </>}
             <div className="patchnotes">

@@ -158,6 +158,10 @@ button {
 
 .homePageButton {
   position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 3vh;
+  margin-right: 2vw;
 }
 
 /* TRASH BIN FOR A POTENITALLY USED

@@ -123,7 +123,7 @@ function App() {
         </div>
       </>)}
       {currentPage != "Home" && 
-    <button className="homePageButton" onClick={() => setPage("Home")}> Back to Home Page</button>
+    <button className="homePageButton" onClick={() => setPage("Home")}>Back to Home Page</button>
       }
     </>
   )

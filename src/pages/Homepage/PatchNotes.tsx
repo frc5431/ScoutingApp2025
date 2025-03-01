@@ -13,6 +13,10 @@ const PatchNotes: React.FC = () => {
     const [versionSelection, changeVersionSelection] = useState(0);
     const versions: Version[] = [
         {
+            name: "HOPEFULLY_DONE_16.1v",
+            notes: ["Moved back to home page button"]
+        },
+        {
             name: "HOPEFULLY_DONE_16v",
             notes: ["Added Homepage", "Added Patch Notes", "Fixed End Data not saving"]
         },
