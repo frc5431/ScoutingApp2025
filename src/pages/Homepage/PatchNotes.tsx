@@ -14,7 +14,7 @@ const PatchNotes: React.FC = () => {
     const versions: Version[] = [
         {
             name: "HOPEFULLY_DONE_16v",
-            notes: ["Added Homepage", "Added Patch Notes"]
+            notes: ["Added Homepage", "Added Patch Notes", "Fixed End Data not saving"]
         },
         {
             name: "HOPEFULLY_DONE_15.3v",

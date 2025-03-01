@@ -156,6 +156,10 @@ button {
   color: white;
 }
 
+.homePageButton {
+  position: absolute;
+}
+
 /* TRASH BIN FOR A POTENITALLY USED
 
 .select-dropdown,

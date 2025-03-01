@@ -50,7 +50,7 @@ const End: React.FC<endProps> = ({
     { label: 'No', value: 'No' }
   ];
 
-  const [stage, setStage] = useState(matchData.stage || '');
+  const [stage, setStage] = useState(endData.stage || '');
   const stageOptions: Option = [
     { label: 'Deep Climb', value: 'DeepClimb' },
     { label: 'Shallow Climb', value: 'ShallowClimb' },
@@ -58,8 +58,8 @@ const End: React.FC<endProps> = ({
     { label: 'None', value: 'None' }
   ];
 
-  const [coopertiton, setCoopertiton] = useState(matchData.coopertiiton);
-  const coopertiitonOptions: Option = [
+  const [coopertiton, setCoopertiton] = useState(endData.coopertiton);
+  const coopertitonOptions: Option = [
     { label: 'Yes', value: 'Cooporated' },
     { label: 'No', value: 'Not coopertition' },
   ];
@@ -141,14 +141,14 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
         <ul>
           <div className="input-row">
             <li>
-              <div className="inputcolorredpointscool">
-                <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 68"></Field>
+              <div>
+                <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 68"></Field>
               </div>
             </li>
             <li>
               <div className="input-container">
-                <div className="inputcolorbluepointscool">
-                  <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 70"></Field>
+                <div>
+                  <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 70"></Field>
                 </div>
               </div>
             </li>
@@ -165,7 +165,7 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
             <div className="endrow">
 
               <RadioButtons vari={stage} setVari={setStage} options={stageOptions} groupName="Endgame"></RadioButtons>
-              <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertiitonOptions} groupName="Coopertition"></RadioButtons>
+              <RadioButtons vari={coopertiton} setVari={setCoopertiton} options={coopertitonOptions} groupName="Coopertition"></RadioButtons>
             </div>
           </div>
           <div className="omgsexyrow">

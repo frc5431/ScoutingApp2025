@@ -8,6 +8,7 @@ import Mainpage from './pages/Mainpage/Mainpage';
 import Auton from './pages/Auton/Auton';
 import Match from './pages/Match/Match';
 import End from './pages/End/End';
+import Homepage from './pages/Homepage/Home';
 
 
 function App() {
@@ -121,7 +122,9 @@ function App() {
           )}
         </div>
       </>)}
-
+      {currentPage != "Home" && 
+    <button className="homePageButton" onClick={() => setPage("Home")}> Back to Home Page</button>
+      }
     </>
   )
 
