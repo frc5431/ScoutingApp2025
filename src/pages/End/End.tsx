@@ -141,15 +141,15 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
         <ul>
           <div className="input-row">
             <li>
-              <div>
-                <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 68"></Field>
+              <div className="input-container">
+                <div>
+                  <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 70" style={{color:'#ffcccb'}}></Field>
+                </div>
               </div>
             </li>
             <li>
-              <div className="input-container">
-                <div>
-                  <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 70"></Field>
-                </div>
+              <div>
+                <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 68" style={{color:'#cde3fd'}}></Field>
               </div>
             </li>
           </div>

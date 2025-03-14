@@ -4,6 +4,8 @@ import RadioButtons, { Option } from "../../components/radioButtons/radioButtons
 import Field from "../../components/Field/Field";
 import './Mainpage.css';
 import { triggerConfetti } from "../../components/triggerConfetti";
+import Algae from "../../assets/algae.png";
+import Coral from "../../assets/coral.png";
 
 export interface mainpageProps {
   mainpageData: {[key:string]: any};
@@ -89,12 +91,22 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setMainpageData}: main
           </div>
 
           <li>
-            <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click The Button to Select)</label>
-            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={setRobotPos}></ImageClick>
+            {/* <label style={{fontSize:'1.5em'}}>Robot Starting Position (Click The Button to Select)</label>
+            <ImageClick type={"one"} robotPos={robotPos} setRobotPos={()=>null}></ImageClick> */}
             <RadioButtons vari={robotPos} setVari={setRobotPos} options={robotPosOptions} groupName="Robot Starting Position"></RadioButtons>
           </li>
      </ul>
       </form>
+      <div style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', alignItems:'center', marginTop:'4vh'}}>
+        <div className="gamepiece-container">
+        <img src={Algae} style={{width:'20vw'}}/>
+        <p style={{color:'#A6E9CD'}}>Algae</p>
+        </div>
+        <div className="gamepiece-container">
+        <img src={Coral} style={{width:'20vw'}}/>
+        <p>Coral</p>
+        </div>
+      </div>
     </>
   );
 };

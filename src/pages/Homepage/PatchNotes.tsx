@@ -13,6 +13,10 @@ const PatchNotes: React.FC = () => {
     const [versionSelection, changeVersionSelection] = useState(0);
     const versions: Version[] = [
         {
+            name: "HOPEFULLY_DONE_17v",
+            notes: ["Swapped blue and red boxes", "Changed confetti rates when clearing the page", "Fixed verison selector css title", "changed blue and red boxes input color","replaced imageclick map with coral and algae key"]
+        },
+        {
             name: "HOPEFULLY_DONE_16.1v",
             notes: ["Moved back to home page button"]
         },

@@ -253,4 +253,5 @@
   flex-direction: row;
   gap: 1vw;
   background-color: transparent;
+  justify-content: center;
 }
