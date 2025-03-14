@@ -1,14 +1,15 @@
 import React from 'react';
 
 /* 
-  uses discriminated union design. Claude helped generate this code, will learn this design seems very useful. 
+  Uses discriminated union design. Claude helped generate this code, will learn this design seems very useful. 
   I'm writing this so I can attempt to learn what is happening. There is a base field, and I have as many 
-  types as I want. Current there is a "text" and a "number". I put any common variables in base, and anything 
-  that needs to be seperate is in its respective props.  
+  types as I want. Currently, there is a "text" and a "number". I put any common variables in base, and anything 
+  that needs to be separate is in its respective props.  
 */
 interface BaseFieldProps {
   groupName: string;
   placeHolder?: string;
+  style?: React.CSSProperties; // Ensures style is correctly typed as an object
 }
 
 interface TextFieldProps extends BaseFieldProps {
@@ -27,14 +28,11 @@ interface NumberFieldProps extends BaseFieldProps {
 
 export type FieldProps = TextFieldProps | NumberFieldProps;
 
-const Field = ({ setValue, value, groupName, type, placeHolder, ...props}: FieldProps) => {
+const Field = ({ setValue, value, groupName, type, placeHolder, style, ...props }: FieldProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // The different actions and filters for different types
-    if (type === "number") {
+    if (type === 'number') {
       setValue(Number(e.target.value));
-    }
-    // text is simple, it can take in anything. 
-    else {
+    } else {
       setValue(e.target.value);
     }
   };
@@ -42,18 +40,19 @@ const Field = ({ setValue, value, groupName, type, placeHolder, ...props}: Field
   return (
     <div className="input-container">
       <label>{groupName}</label>
-      <input 
+      <input
+        style={style} 
         name={groupName}
         value={value}
         type={type}
         onChange={handleChange}
         placeholder={placeHolder}
-
-        // Number specific properities
-        {...(type === 'number' ? {
-          min: (props as NumberFieldProps).min,
-          max: (props as NumberFieldProps).max,
-        } : {})}
+        {...(type === 'number'
+          ? {
+              min: (props as NumberFieldProps).min,
+              max: (props as NumberFieldProps).max,
+            }
+          : {})}
       />
     </div>
   );

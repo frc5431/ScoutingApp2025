@@ -48,7 +48,7 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
             return clearInterval(interval);
           }
   
-          const particleCount = 100 * (timeLeft / duration);
+          const particleCount = 50 * (timeLeft / duration);
           confetti(Object.assign({}, defaults, { 
             particleCount, 
             origin: { x: 0.2, y: Math.random() - 0.2 },
@@ -67,18 +67,18 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
   
     
     case 'cannon':
-      const end = Date.now() + (3 * 1000);
+      const end = Date.now() + (1 * 1000);
 
       (function frame() {
         confetti({
-          particleCount: 2,
+          particleCount: 1,
           angle: 60,
           spread: 55,
           origin: { x: 0 },
           colors: colors
         });
         confetti({
-          particleCount: 2,
+          particleCount: 1,
           angle: 120,
           spread: 55,
           origin: { x: 1 },
