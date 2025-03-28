@@ -9,6 +9,8 @@ import Auton from './pages/Auton/Auton';
 import Match from './pages/Match/Match';
 import End from './pages/End/End';
 import Homepage from './pages/Homepage/Home';
+import { atom, useAtom } from 'jotai';
+import { desaturatedAtom } from './pages/Homepage/Config';
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
   const [matchColorButton, setMatchColorButton] = useState("#242424");
   const [endColorButton, setEndColorButton] = useState("#242424");
   const [filtersettings] = useState("brightness(1.2) contrast(120%) saturate(150%)");
+  const [desaturated] = useAtom(desaturatedAtom);
 
   
 

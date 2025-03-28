@@ -14,9 +14,11 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   overflow: hidden;
+  filter: var(--filter);
 }
 :root {
   --background-color: #242424; /* Default color */
+  --filter: grayscale(0); /* Default greylevel */
 }
 
 /* 

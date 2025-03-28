@@ -10,6 +10,10 @@ interface Version {
 
 export const versions: Version[] = [
     {
+        name: "HOPEFULLY_DONE_18.1v",
+        notes: ["Added Desaturation into config for Caden Tran", "Fixed number inputs defaulting nothing to 0"]
+    },
+    {
         name: "HOPEFULLY_DONE_18v",
         notes: ["Fixed Patch Notes and Verison name being messed", "Added Config Function on Home page", "Added Red & Blue Swapper in Config", "Changed checkmark to be red while unchecked in config", "Added Placeholder Removal in Config"]
     },

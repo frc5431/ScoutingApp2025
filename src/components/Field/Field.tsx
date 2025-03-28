@@ -1,17 +1,11 @@
 import React from 'react';
-import {atom, useAtom} from 'jotai';
+import {useAtom} from 'jotai';
 import { removePlaceholderAtom } from '../../pages/Homepage/Config';
 
-/* 
-  Uses discriminated union design. Claude helped generate this code, will learn this design seems very useful. 
-  I'm writing this so I can attempt to learn what is happening. There is a base field, and I have as many 
-  types as I want. Currently, there is a "text" and a "number". I put any common variables in base, and anything 
-  that needs to be separate is in its respective props.  
-*/
 interface BaseFieldProps {
   groupName: string;
   placeHolder?: string;
-  style?: React.CSSProperties; // Ensures style is correctly typed as an object
+  style?: React.CSSProperties;
 }
 
 interface TextFieldProps extends BaseFieldProps {
@@ -22,8 +16,8 @@ interface TextFieldProps extends BaseFieldProps {
 
 interface NumberFieldProps extends BaseFieldProps {
   type: 'number';
-  value: number;
-  setValue: React.Dispatch<React.SetStateAction<number>>;
+  value: number | null;
+  setValue: React.Dispatch<React.SetStateAction<number | null>>;
   min: number;
   max: number;
 }
@@ -33,11 +27,19 @@ export type FieldProps = TextFieldProps | NumberFieldProps;
 const Field = ({ setValue, value, groupName, type, placeHolder, style, ...props }: FieldProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (type === 'number') {
-      setValue(Number(e.target.value));
+      const inputValue = e.target.value.trim();
+      
+      if (inputValue === '') {
+        setValue(null);
+      } else {
+        const numValue = Number(inputValue);
+        setValue(isNaN(numValue) ? null : numValue);
+      }
     } else {
       setValue(e.target.value);
     }
   };
+
   const [removePlaceholder] = useAtom(removePlaceholderAtom);
 
   return (
@@ -46,7 +48,7 @@ const Field = ({ setValue, value, groupName, type, placeHolder, style, ...props 
       <input
         style={style} 
         name={groupName}
-        value={value}
+        value={value ?? ''}
         type={type}
         onChange={handleChange}
         placeholder={!removePlaceholder ? placeHolder : ''}
