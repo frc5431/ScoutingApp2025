@@ -1,4 +1,6 @@
 import React from 'react';
+import {atom, useAtom} from 'jotai';
+import { removePlaceholderAtom } from '../../pages/Homepage/Config';
 
 /* 
   Uses discriminated union design. Claude helped generate this code, will learn this design seems very useful. 
@@ -36,6 +38,7 @@ const Field = ({ setValue, value, groupName, type, placeHolder, style, ...props 
       setValue(e.target.value);
     }
   };
+  const [removePlaceholder] = useAtom(removePlaceholderAtom);
 
   return (
     <div className="input-container">
@@ -46,7 +49,7 @@ const Field = ({ setValue, value, groupName, type, placeHolder, style, ...props 
         value={value}
         type={type}
         onChange={handleChange}
-        placeholder={placeHolder}
+        placeholder={!removePlaceholder ? placeHolder : ''}
         {...(type === 'number'
           ? {
               min: (props as NumberFieldProps).min,

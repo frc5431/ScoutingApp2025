@@ -231,10 +231,24 @@
     align-items: center;
 }
 
+
 .patchbutton{
     display:flex;
-    align-items:'center';
+    align-items:center;
     background-color: transparent;
+}
+
+.configbutton{
+    display:flex;
+    align-items:center;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 3vh;
+    margin-left: 2vw;
+    font-size: 1.6rem;
+    align-items: center;
 }
 
 .versionNumber {
@@ -252,6 +266,14 @@
   display: flex;
   flex-direction: row;
   gap: 1vw;
+  background-color: transparent;
+  justify-content: center;
+}
+
+.configCheckboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 4vw;
   background-color: transparent;
   justify-content: center;
 }

@@ -8,27 +8,33 @@ interface Version {
     notes: string[];
 }
 
+export const versions: Version[] = [
+    {
+        name: "HOPEFULLY_DONE_18v",
+        notes: ["Fixed Patch Notes and Verison name being messed", "Added Config Function on Home page", "Added Red & Blue Swapper in Config", "Changed checkmark to be red while unchecked in config", "Added Placeholder Removal in Config"]
+    },
+    {
+        name: "HOPEFULLY_DONE_17v",
+        notes: ["Swapped blue and red boxes", "Changed confetti rates when clearing the page", "Fixed verison selector css title", "changed blue and red boxes input color","replaced imageclick map with coral and algae key"]
+    },
+    {
+        name: "HOPEFULLY_DONE_16.1v",
+        notes: ["Moved back to home page button"]
+    },
+    {
+        name: "HOPEFULLY_DONE_16v",
+        notes: ["Added Homepage", "Added Patch Notes", "Fixed End Data not saving"]
+    },
+    {
+        name: "HOPEFULLY_DONE_15.3v",
+        notes: ["Fixed 'stage'", "Merged Revamp into Revamp???"]
+    }
+];
+
 const PatchNotes: React.FC = () => {
 
     const [versionSelection, changeVersionSelection] = useState(0);
-    const versions: Version[] = [
-        {
-            name: "HOPEFULLY_DONE_17v",
-            notes: ["Swapped blue and red boxes", "Changed confetti rates when clearing the page", "Fixed verison selector css title", "changed blue and red boxes input color","replaced imageclick map with coral and algae key"]
-        },
-        {
-            name: "HOPEFULLY_DONE_16.1v",
-            notes: ["Moved back to home page button"]
-        },
-        {
-            name: "HOPEFULLY_DONE_16v",
-            notes: ["Added Homepage", "Added Patch Notes", "Fixed End Data not saving"]
-        },
-        {
-            name: "HOPEFULLY_DONE_15.3v",
-            notes: ["Fixed 'stage'", "Merged Revamp into Revamp???"]
-        }
-    ];
+    
 
     useEffect(() => {
         if (versionSelection < 0) {
@@ -59,6 +65,7 @@ const PatchNotes: React.FC = () => {
                     <li key={index}>{note}</li>
                 ))}
             </ul>
+            
         </>
     );
 

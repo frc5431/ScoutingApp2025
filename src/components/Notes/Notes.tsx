@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { defineConfig } from "vite";
 import './Notes.css';
+import { useAtom } from "jotai";
+import { removePlaceholderAtom } from "../../pages/Homepage/Config";
 
 export interface notesProps {
   notes: string;
@@ -13,6 +15,7 @@ const Notes: React.FC<notesProps> = ({ notes, setNotes, placeholder }: notesProp
   const toggleRevealNotes = () => {
     setRevealNotes((prev) => !prev);
   };
+  const [removePlaceholder] = useAtom(removePlaceholderAtom);
 
   return (
     <>
@@ -21,7 +24,7 @@ const Notes: React.FC<notesProps> = ({ notes, setNotes, placeholder }: notesProp
       {revealNotes && (
         <div className="notes-overlay">
           <h3>Put your notes in the box below!</h3>
-          <textarea className="notesbox" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={placeholder}></textarea>
+          <textarea className="notesbox" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={!removePlaceholder ? placeholder : ''}></textarea>
           <button onClick={toggleRevealNotes} className="exitnotesboxbutton">
             EXIT
           </button>

@@ -7,6 +7,8 @@ import pickupduck from "../../assets/pickupduck.jpg";
 import Field from "../../components/Field/Field";
 import './End.css';
 import { v4 as uuidv4 } from 'uuid';
+import { useAtom } from "jotai";
+import { swapAllianceAtom } from "../Homepage/Config";
 export interface endProps {
   endData: { [key: string]: any };
   setEndData: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
@@ -74,6 +76,7 @@ const End: React.FC<endProps> = ({
 
   const [UUID, setUUID] = useState(uuidv4().toString());
   const QRuuid =  UUID.toString();
+  const [swapAlliance] = useAtom(swapAllianceAtom);
 
   
 
@@ -143,13 +146,15 @@ const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
             <li>
               <div className="input-container">
                 <div>
-                  <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 70" style={{color:'#ffcccb'}}></Field>
+                  {!swapAlliance && <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 70" style={{color:'#ffcccb'}}></Field>}
+                  {swapAlliance && <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 68" style={{color:'#cde3fd'}}></Field>}
                 </div>
               </div>
             </li>
             <li>
               <div>
-                <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 68" style={{color:'#cde3fd'}}></Field>
+                {!swapAlliance && <Field type="number" value={bluePoints} setValue={setBluePoints} groupName="Blue Points" min={0} max={999} placeHolder="Ex: 68" style={{color:'#cde3fd'}}></Field>}
+                {swapAlliance && <Field type="number" value={redPoints} setValue={setRedPoints} groupName="Red Points" min={0} max={999} placeHolder="Ex: 70" style={{color:'#ffcccb'}}></Field>}
               </div>
             </li>
           </div>

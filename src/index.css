@@ -164,6 +164,107 @@ button {
   margin-right: 2vw;
 }
 
+.checkboxContainer {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  gap: 20px; 
+}
+
+.mainpage-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mainpage-checkbox input {
+  display: none; /* Hide the default checkbox */
+}
+
+.mainpage-checkbox input:checked + .checkmark {
+  background-color: #10b14b; /* Background color when checked */
+  animation: checkmarkChecked 2.5s infinite;
+}
+
+.mainpage-checkbox input:checked + .checkmarkRedBackground {
+  background-color: #10b14b; /* Background color when checked */
+  animation: checkmarkChecked 2.5s infinite;
+}
+
+.mainpage-checkbox input:checked + .checkmark:after {
+  opacity: 1; /* Show checkmark when checked */
+}
+
+.mainpage-checkbox input:checked + .checkmarkRedBackground:after {
+  opacity: 1; /* Show checkmark when checked */
+}
+
+.checkboxtext {
+  margin-right: 1px;
+  font-size: 1.25rem;
+}
+
+.checkmark {
+  width: 25px; /* Size of the checkbox */
+  height: 25px; /* Size of the checkbox */
+  background-color: #1A1A1A; /* Background color when unchecked */
+  border-radius: 6px; /* Rounded corners */
+  margin-right: 15px; /* Spacing between checkbox and label */
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.checkmarkRedBackground {
+  width: 25px; /* Size of the checkbox */
+  height: 25px; /* Size of the checkbox */
+  background-color: #9b0808; /* Background color when unchecked */
+  border-radius: 6px; /* Rounded corners */
+  margin-right: 15px; /* Spacing between checkbox and label */
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 3px;
+  width: 5px;
+  height: 13px;
+  border: solid white; /* Checkmark color */
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.2s;
+}
+
+.checkmarkRedBackground:after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 3px;
+  width: 5px;
+  height: 13px;
+  border: solid white; /* Checkmark color */
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.2s;
+}
+
+@keyframes checkmarkChecked {
+  0% {
+  box-shadow: 0 0 20px #10b14b;
+    }
+  50% {
+    box-shadow: 0 0 10px #10b14b;
+   }
+  100% {
+    box-shadow: 0 0 20px #10b14b;
+    }
+}
+
+
 /* TRASH BIN FOR A POTENITALLY USED
 
 .select-dropdown,
